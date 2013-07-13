@@ -3,13 +3,35 @@
     <head>
         <link rel="stylesheet" type="text/css" href="/static_files/style.css">
         <title>Plan a Day</title>
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script type="text/javascript">
+            function filter() {
+                var data = {'tourId':'{{tourId}}'};
+                data += $('#areasForm').serialize();
+                $.post('{% url "geotour:change" %}', data, function(htmlResponse) {
+                    var element = document.getElementById('fill_in');
+                    element.innerHTML = htmlResponse;
+                });
+            }
+        </script>
     </head>
+
     <body>
-        {% for place in places %}
-        <div>
-            <p>{{place.name}}</p>
-            <p>{{place.address}}</p>
-        </div>
-        {% endfor %}      
+
+            <form method="POST">{% csrf_token %}
+                <div id="areasForm">
+                    {% for area in areas %}
+                    {{area}} <input type="checkbox" onclick="filter()" name="areas" value="{{area}}" id="areas"><br />
+                    {% endfor %}
+                </div>
+            </form>
+        <div id="fill_in">
+            {% for place in places %}
+            <div>
+                <p>{{place.name}}</p>
+                <p>{{place.address}}</p>
+            </div>
+            {% endfor %}
+        </div>      
     </body>
 </html>

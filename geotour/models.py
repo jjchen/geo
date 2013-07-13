@@ -33,16 +33,8 @@ class Place(models.Model):
     details =  models.CharField(max_length=200)
     def __unicode__(self):
         return self.name
+    class Meta:
+        ordering = ('address',)
 
 class Area(models.Model):
-    interestType = models.CharField(max_length=200)
-
-class Tour(models.Model):
-	name = models.CharField(max_length=200)
-	fromAddress = models.CharField(max_length=200)
-	destination = models.CharField(max_length=200)
-	returnAddress = models.CharField(max_length=200)
-	startTime = models.DateTimeField(default=datetime.date.today())
-	endTime = models.DateTimeField(default=datetime.date.today())
-	transport = models.ManyToManyField(Transport)
-	areas =  models.ManyToManyField(Area)	
+    interestType = models.CharField(max_length=200)	
