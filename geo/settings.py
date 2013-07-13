@@ -1,7 +1,27 @@
-# Django settings for geo project.
+# Django settings for oc project.
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+DEBUG = False
+TEMPLATE_DEBUG = False
+
+# Public: www.cos333-oc.herokuapp.com/
+FACEBOOK_APP_ID = '431733443585073'
+FACEBOOK_API_SECRET = 'bee41bd237e61feb159d64f99e7db996'
+
+# Private: localhost:8000
+#FACEBOOK_APP_ID =  '125667410957888'
+#FACEBOOK_API_SECRET = '1d71ff77879df12aa55ba2307523ab04'
+
+FACEBOOK_EXTENDED_PERMISSIONS = ['user_events', 'friends_events',
+                                 'create_event', 'rsvp_event', 'user_groups',
+                                 'read_friendlists']
+
+LOGIN_URL = '/frontend/login/facebook'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_ERROR_URL = '/error/'
+
+SOCIAL_AUTH_COMPLETE_URL_NAME = 'socialauth_complete'
+SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
+SOCIAL_AUTH_USER_MODEL = 'frontend.MyUser'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -23,13 +43,13 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = '*'
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/New_York'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -74,6 +94,20 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+TAGGING_AUTOCOMPLETE_MAX_TAGS = 5
+
+TAGGING_AUTOCOMPLETE_JQUERY_UI_FILE = 'http://code.jquery.com/ui/1.10.2/jquery-ui.js'
+
+TAGGING_AUTOCOMPLETE_CSS = (
+    'TAGGING_AUTOCOMPLETE_JS_BASE_URL/css/jquery-ui-1.9.2.custom.css',
+    'TAGGING_AUTOCOMPLETE_JS_BASE_URL/css/jquery.ui.1.10.0.ie.css',
+    'TAGGING_AUTOCOMPLETE_JS_BASE_URL/css/jquery-ui-1.10.0.custom.css',
+    #'TAGGING_AUTOCOMPLETE_JS_BASE_URL/css/jquery.tagit.css',
+    #'TAGGING_AUTOCOMPLETE_JS_BASE_URL/css/tagit.ui-zendesk.css',
+    #'TAGGING_AUTOCOMPLETE_JS_BASE_URL/css/ui-autocomplete-tag-it.css',
+    'TAGGING_AUTOCOMPLETE_JS_BASE_URL/css/jquery.ui.1.9.2.ie.css',
+)
+
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
@@ -83,13 +117,23 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '3rr@$&%rs!ubji9a1v21!t&b4nnay@fae22f+k#g!m&at%3bgu'
+SECRET_KEY = 'u3x7_a7=+a^mong!uz!m4!$1gx)%j1um*=#@%+6b+$d4!gn*ro'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.eggs.Loader',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -98,14 +142,18 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django_cas.middleware.CASMiddleware',
+    'django.middleware.doc.XViewMiddleware'
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'geo.urls'
+CAS_SERVER_URL = 'https://fed.princeton.edu/cas/'
+CAS_REDIRECT_URL = '/frontend/'
+ROOT_URLCONF = 'oc.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'geo.wsgi.application'
+WSGI_APPLICATION = 'oc.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -118,13 +166,17 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
-    'geotour',
+    'django.contrib.admindocs',
+    'geotour'
 )
 
 # A sample logging configuration. The only tangible logging
@@ -156,23 +208,9 @@ LOGGING = {
     }
 }
 
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
-
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-# Allow all host headers
-ALLOWED_HOSTS = ['*']
-
-# Static asset configuration
-import os
-PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_PATH, 'static'),
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.facebook.FacebookBackend',
+    'django_cas.backends.CASBackend',
+    'django.contrib.auth.backends.ModelBackend'
 )
 
