@@ -106,6 +106,7 @@ def change(request):
     print "change"
     tourId = request.POST['tourId']
     areas = request.POST.getlist('areas')
+    print areas
 
     searchResults = []
     tourPlaces = []
@@ -135,8 +136,11 @@ def change(request):
                 if not added:
                     added = True
                     searchResults.append(place)
-    return render_to_response('timeline.html', {'tourId': tourId, 'searchResults': searchResults, 'tourPlaces': tourPlaces},
-     context_instance=RequestContext(request))
+    return render(request, 'timeline.html', {'tourId': tourId,
+        'searchResults': searchResults, 'tourPlaces': tourPlaces
+        })
+    #return render_to_response('timeline.html', {'tourId': tourId, 'searchResults': searchResults, 'tourPlaces': tourPlaces},
+    # context_instance=RequestContext(request))
 
 def test(request):
     t = get_template('test.html')
