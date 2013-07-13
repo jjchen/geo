@@ -73,10 +73,10 @@
 	    </div>
 	  -->
 	<div id="tourResult">
-		<div class="list-right ui-sortable">
+		<div class="list-right ui-sortable" id="blah">
 		{% for place in tourPlaces %}
-			<div class="place" id='{{place.id}}'>Place 3</div>
-		    <div class="place" id='{{place.id}}'>{{place.name}}</div>
+			<div class="place" id='{{place.id}}'>{{place.id}} Place 3</div>
+		    <div class="place" id='{{place.id}}'>{{place.name}} {{place.id}}</div>
 		{% endfor %}
 		</div>
 	</div>

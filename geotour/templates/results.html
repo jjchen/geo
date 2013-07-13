@@ -24,10 +24,6 @@
     </head>
 
     <body>
-        <div id="miniNavBar">
-            Test
-            <img src="{% static 'images/gmaps.png' %}" id="gMapsIcon">
-        </div>
         <div id="topBanner">GeoTour</div>
 
         <div id="main">
@@ -47,14 +43,20 @@
                     places = []
                     durations = []
                     $('.list-right .place').each(function(index) {
-                        places.push(this.id);
-                        alert(this.style.width/100.0)
-                        durations.push(this.style.width/100.0);
-                    });
-                    data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations}
-                    // $.post('{% url "geotour:update" %}', data, function(htmlResponse) {
+                        places.push($(this).attr('id'));
+                    //    alert($('this').height()/100.0)
 
-                    // });
+                        var decimal = $(this).height()/100.0 * 60;
+                        var hours = Math.floor(decimal/60);
+                        var minutes = decimal % 60;
+
+                        $(this).html($(this).html()+" Time: " + hours + "h " + minutes.toFixed(2) + "m");
+                        durations.push($('this').height()/100.0);
+                    });
+                    data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations, 'csrfmiddlewaretoken': '{{ csrf_token }}'}
+                    $.post('{% url "geotour:update" %}', data, function(htmlResponse) {
+
+                    });
                     $('.list-right .place').resizable({ handles: "s" });
                 }
             });
@@ -64,14 +66,20 @@
                     places = []
                     durations = []
                     $('.list-right .place').each(function(index) {
-                        places.push(this.id);
-                        alert(this.id)
-                        alert(this.style.width/100.0)
-                        durations.push(this.style.width/100.0);
+                        places.push($(this).attr('id'));
+                      //  alert($(this).attr('id'));
+                      //  alert("width: " + $(this).height())
+                      //  alert($(this).height()/100.0)
+                        var decimal = $(this).height()/100.0 * 60;
+                        var hours = Math.floor(decimal/60);
+                        var minutes = decimal % 60;
+
+                        $(this).html($(this).html()+" Time: " + hours + "h " + minutes.toFixed(0) + "m");
+                        durations.push($(this).height()/100.0);
                     });
-                    data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations}
-                    // $.post('{% url "geotour:update" %}', data, function(htmlResponse) {
-                    // });
+                    data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations, 'csrfmiddlewaretoken': '{{ csrf_token }}'}
+                    $.post('{% url "geotour:update" %}', data, function(htmlResponse) {
+                    });
                 }
             });
 
