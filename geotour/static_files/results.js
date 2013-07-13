@@ -32,11 +32,6 @@ var deleteBox = function(e) {
     element.parentNode.removeChild(element);
 };
 
-var deleteBox = function(e) {
-    var element = e.srcElement.parentNode.parentNode;
-    element.parentNode.removeChild(element);
-};
-
 var resizePage = function() {
     var H = 600;
     var sidebarH = $("nav").height();
