@@ -9,9 +9,15 @@
         <title>Plan a Day</title>
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script type="text/javascript"> 
-            var tourId = {{tourId}}; 
-            var searchResults = {{searchResults}};
-            var tourPlaces = {{tourPlaces}};
+            var tourId = {{tourId}};
+            var lats = [];
+            var lngs = [];
+            {% for place in tourPlaces %}
+                alert({{place.address}});
+                lats.push({{place.address}});
+                lngs.push({{place.details}});
+            {% endfor %} 
+            var modeOfTransport = ;
         </script>
         <script src="{% static "results.js" %}"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -73,23 +75,18 @@ def update(request):
 def results(request, tourId):
     global lat
     global lng
-    print "results"
     tour = Tour.objects.get(id = tourId)
     placedict={}
     p = Place.objects.filter(tour = tour)
     p.delete()
     places = []
     placesresults = getPlaces(lat, lng)
-    print placesresults
     for item in placesresults:
         place = Place.objects.create(tour = tour)
         place.name = item['name']
         place.address = item['geometry']['location']
-        print place.name
-        print place.address
     	place.save()
     places = Place.objects.filter(tour = tour)
-    print places
     searchResults = []
     tourPlaces = []
     return render(request, 'results.html', {'tourId': tourId,
