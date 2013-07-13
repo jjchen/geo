@@ -48,7 +48,7 @@
 <div id="searchResults">
     <div class="list-left ui-sortable">
 		{% for place in searchResults %}
-			<div class="singleSearchResults place" id='{{place.id}}'>{{place.name}}</div>
+			<div class="singleSearchResult place" id='{{place.id}}'>{{place.name}}</div>
 		{% endfor %}
 	</div>
 </div>
@@ -65,8 +65,13 @@
 	<div id="tourResult">
 		<div class="list-right ui-sortable" id="blah">
 		{% for place in tourPlaces %}
-		    <div class="place" id='{{place.id}}'>{{place.name}}</div>
-		{% endfor %}
+        <div>
+            <div class="place" id='{{place.id}}'>{{place.id}} Place 3</div>
+            <div class="delete">
+                <input type="button" class="brightButton small deleteButton" value="X">
+            </div>
+        </div>
+            {% endfor %}
 		</div>
 	</div>
 </article>

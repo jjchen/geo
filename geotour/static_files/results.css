@@ -44,7 +44,7 @@ nav {
 }
 
 #searchFilters {
-    padding: 5px;
+    padding: 10px;
 }
 
 #transpoIcons {
@@ -75,8 +75,10 @@ nav {
 }
 
 #searchResults {
-    padding: 5px;
-
+    width: 400px;
+    position: relative;
+    padding: 10px;
+    margin: 20px;
 }
 
 #gMapsPanel {
@@ -103,7 +105,8 @@ nav {
 .singleSearchResult {
     position: relative;
     margin: 5px;
-    background-color: #f81;
+    background-color: #fff;
+    border: 1px solid #d6d6d6;
     width: 80%;
     height: auto;
 }
@@ -118,8 +121,8 @@ nav {
 
 /* Right side: */
 article {
-    padding: 5px;
-    width: 589px;
+    padding: 10px;
+    width: 579px;
     height: 100%;
     float: right;
     position: relative;
@@ -142,13 +145,23 @@ article {
 .list-right .place {
      width: 500px; 
      height: 100px;
-     background-color: #f81;
+     background-color: #fff;
+     border: 1px solid #d6d6d6;
      padding:20px;
      margin:20px;
 }
 
 .list-right{
     width: 500px;
+}
+
+.delete {
+    z-index: 1000;
+    position: absolute;
+    margin-top: -50px;
+    left: 85%;
+    height: 25px;
+    width: 15px;
 }
 
 .icons {
