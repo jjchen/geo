@@ -1,11 +1,14 @@
 <!DOCTYPE html>
+
+{% load staticfiles %}
+
 <html>
     <head>
         <link href='http://fonts.googleapis.com/css?family=Lora|Muli|Great+Vibes' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" type="text/css" href="../static_files/style.css">
-        <link rel="stylesheet" type="text/css" href="../static_files/home.css">
-        <link rel="stylesheet" type="text/css" href="../static_files/datepicker/css/datepicker.css">
+        <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "home.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "datepicker/css/datepicker.css" %}">
 
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="../static_files/datepicker/js/bootstrap-datepicker.js"></script>
