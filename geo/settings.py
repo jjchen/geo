@@ -27,7 +27,9 @@ SOCIAL_AUTH_USER_MODEL = 'frontend.MyUser'
 
 ADMINS = (
     ('Jisha Kambo', 'jisha.k9@gmail.com'),
-    ('jisha2', 'jk2228@cornell.edu')
+    ('jisha2', 'jk2228@cornell.edu'),
+    ('Jiexi Cao', 'jcao@hmc.edu'),
+    ('Jiexi Cao', 'jiexicao@gmail.com'),
     # ('Your Name', 'your_email@example.com'),
 )
 

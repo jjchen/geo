@@ -12,6 +12,13 @@ var toggleList = function(type) {
 
 };
 
+var chooseTranspo = function(e) {
+    var elementId = e.srcElement.id;
+    console.log("You chose: " + elementId + " as your transportation mode");
+    $(".icons").css("border", "none");
+    $("#" + elementId).css("border", "1px solid #000000");
+};
+
 var openGoogleMaps = function() {
     alert("Need to make maps pop up!");
 };
@@ -38,5 +45,9 @@ var resizePage = function() {
 $(window).load(function() {
     resizePage();
     document.getElementById("gMapIcon").addEventListener("click", openGoogleMaps);
+    var allTranspoIcons = document.getElementsByClassName("icons");
+    for (var i = 0; i < allTranspoIcons.length; i++) {
+        allTranspoIcons[i].addEventListener("click", chooseTranspo, false);
+    }
 });
 
