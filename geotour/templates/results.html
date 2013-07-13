@@ -7,32 +7,11 @@
     <body>
 
             <form method="POST">{% csrf_token %}
-                <div id="homeMainForm">
-
-                    <div id="destDiv">
-                        <input type="text" name="destination" id="destField"
-                            placeHolder="Where to explore?">
-                    </div>
-
-                    <div id="startEnd">
-                        <input type="text" name="from" id="startField"
-                            placeHolder="Starting from...">
-                        <div id="showEndField"><a href=""></a></div>
-                        <input type="text" name="return" id="endField">
-                    </div>
-
-                    <div id="timeFrame">
-                        <input type="text" name="date" id="dateInput"
-                            placeHolder="Date">
-                        <input type="text" name="startTime" class="timeInput"
-                            placeHolder="Start Time">
-                        <input type="text" name="endTime" class="timeInput"
-                            placeHolder="End Time">
-                    </div>
+                <div id="areasForm">
+                    {% for area in areas %}
+                    {{area}} <input type="checkbox" onclick="filter()" name="areas" value="{{area}}" id="areas"><br />
+                    {% endfor %}
                 </div>
-
-                <input type="submit" value="Go!" class="brightButton">
-
             </form>
 
         {% for place in places %}
