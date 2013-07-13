@@ -26,20 +26,17 @@
                     </div>
 
                     <div id="startEnd">
-                        <div id="dateDiv" data-date-format="dd-mm-yyyy">
                             <input type="text" name="fromAddress" id="startField" class="startEndField"
-                            placeHolder="Starting from...">
-                        </div>
+                                placeHolder="Starting from...">
+                            <input type="text" name="returnAddress" id="endField" class="startEndField"
+                                placeHolder="Ending at...">
                             <div id="showEndField" onclick="addEndField()">
                                 <span id="showEndFieldText">Not returning here?</span>
-                            <input type="text" name="returnAddress" id="endField" class="startEndField"
-                            placeHolder="Ending at...">
                             </div>
                     </div>
 
                     <div id="timeFrame">
-                        <input type="text" name="date" id="dateInput" class="datePicker"
-                            placeHolder="Date">
+                        <input type="text" name="date" id="dateInput" placeHolder="Date">
                         <input type="text" name="startTime" class="timeInput"
                             placeHolder="Start Time">
                         <input type="text" name="endTime" class="timeInput"
