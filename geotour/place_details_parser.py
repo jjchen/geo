@@ -5,7 +5,7 @@ from operator import itemgetter
 globallat = 37.7749295
 globallng = -122.41941550000001 #San Fran
 
-key= "AIzaSyBAKb1W6-1QgdclZMWtrYmaEHn2p2Uy2Ww"
+key= "AIzaSyCwNAMpd9pWTcLKgOrmgnP6jE8y3J1Ac3Q"
 firstU = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
 firstRadarU = "https://maps.googleapis.com/maps/api/place/radarsearch/json?location="
 secondU = "&radius=50000&sensor=false&key="+key
@@ -105,6 +105,7 @@ def getMultipleAreas(lat,lng,areas):
   print json_obj['status']
   if json_obj['status']=="OK":
     results1 = json_obj['results']
+    results1= results[:10]
     results = getFromRadar(results1)
 
   for result in results:
@@ -121,6 +122,7 @@ def getPlacesInArea(lat, lng, area):
     url = url+"&types="+area
   json_obj = get_json_object_from_url(url)
   results1 = json_obj['results']
+  results1= results[:10]
   results = getFromRadar(results1)
 
   #results.sort(key=itemgetter('name'))
@@ -179,10 +181,21 @@ def getResultsFromObject(json_object):
 
 
 #results = getPlacesInArea(37.7749295,-122.41941550000001, "movie_theatre")
-results = getMultipleAreas(37.7749295,-122.41941550000001, getAllAreas())
+#results = getMultipleAreas(37.7749295,-122.41941550000001, getAllAreas())
+#results = getPlacesInArea(37.7749295,-122.41941550000001, "movie_theatre")
 # url = getUrl(37.7749295,-122.41941550000001)
 # # JSON = get_json_object_from_url(url)
 # results=  JSON['results']
 
+def getDefault():
+  json_obj= get_json_object_from_url("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.7749295,-122.4194155&radius=50000&sensor=false&key=AIzaSyCwNAMpd9pWTcLKgOrmgnP6jE8y3J1Ac3Q&keyword=pier")
+  print json_obj['status']
+  if json_obj['status']=="OK":
+    results1= json_obj['results']
+    results = getFromRadar(results1[:1])
+  for result in results:
+    print result['name']
+  return results
 
 
+getDefault()
