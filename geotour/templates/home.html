@@ -4,13 +4,18 @@
         <link rel="stylesheet" type="text/css" href="../static_files/style.css">
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <title>Plan a Day</title>
+        <script type="text/javascript">
+            $("#mainForm").submit(function(e) {
+                alert("hi");
+            });
+        </script>
     </head>
     <body>
         <div id="home">
             <div id="bigLogo">
                 LOGO GOES HERE
             </div>
-            <form method="POST">{% csrf_token %}
+            <form id="mainForm" method="POST">{% csrf_token %}
                 <div id="homeMainForm">
 
                     <div id="destDiv">

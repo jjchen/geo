@@ -9,7 +9,6 @@ from geotour.models import Tour
 from django.template.defaulttags import csrf_token
 
 include place_details_parser.py
-AREAS = [""]
 
 def home(request):
 	if request.method == 'POST':
