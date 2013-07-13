@@ -22,8 +22,6 @@ class Tour(models.Model):
     endTime = models.DateTimeField(default=datetime.date.today())
     transport = models.ManyToManyField(Transport)
     areas =  models.ManyToManyField(Area)
-    lat = models.DecimalField(max_digits=10, decimal_places=10)
-    lng = models.DecimalField(max_digits=10, decimal_places=10)
     def __unicode__(self):
         return self.name   
 
