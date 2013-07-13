@@ -1,0 +1,31 @@
+/* 
+ * Plan a day!
+ *
+ */
+
+/* Top level style */
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+/* Main box on front page */
+#home {
+    margin: auto;
+    width: 800px;
+    height: 600px;
+    position: relative;
+}
+
+#homeInfo {
+
+}
+
+#homeSubmit {
+    
+}
