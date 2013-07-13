@@ -10,7 +10,7 @@ from django.template.defaulttags import csrf_token
 
 from place_details_parser import *
 
-def home(request):
+def home(request, lat, lng):
 	if request.method == 'POST':
 		destination = request.POST['destination']
 		tour = Tour.objects.create(destination=destination) #save needed? TODO(jisha)
@@ -18,8 +18,9 @@ def home(request):
 		tour.returnAddress = request.POST['returnAddress']
 		tour.startTime = request.POST['startTime']
 		tour.endTime = request.POST['endTime']
+		tour.lat = request.POST['lat']
+		tour.lng = request.POST['lng']
 		tour.save()	
-		#get_json_object_from_url(destination)
 		# tourId = tour.id
 		tourId = 1 #take this out
 		return HttpResponseRedirect('/results/'+str(tourId))
@@ -45,6 +46,7 @@ def filter(request):
 				areas_list += [Area.objects.get(name = area)]
 			except:
 				pass
+	#add areas to database?
 	return render_to_response('timeline.html', places, context_instance=RequestContext(request))
 
 def test(request):
