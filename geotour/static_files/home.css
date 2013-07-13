@@ -2,6 +2,10 @@ body {
     padding-top: 5%;
     margin: 0px;
     font-family: 'Lora', serif;
+    background-image: url("./images/bg.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% auto;
 }
 
 /* Main boxes on front page */
@@ -13,14 +17,20 @@ body {
     top: 50%;
     position: relative;
     border: 1px solid #D6D6D6;
+    background-color: #ffffff;
 }
 
 #bigLogo {
-    border: 1px solid #D6D6D6;
+    margin: 0 auto;
+    padding-top: 10px;
     width: auto;
     height: 200px;
-    font-size: 90px;
+    font-size: 150px;
     font-family: 'Great Vibes', cursive;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 200px;
 }
 
 #homeMainForm {
@@ -30,6 +40,7 @@ body {
 }
 
 #homeSubmit {
+    padding: 20px;
     float: right;
     width: 100px;
 }
@@ -53,6 +64,7 @@ body {
     position: relative;
     padding: 10px;
     margin: auto;
+    width: auto;
 }
 
 .startEndField {
@@ -62,10 +74,11 @@ body {
 }
 
 #startField {
-
+    width: auto;
 }
 
 #endField {
+    width: auto;
     display: none;
 }
 

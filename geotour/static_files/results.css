@@ -1,0 +1,111 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    margin: 0px;
+    background-color: #f6f6f6;
+}
+
+#topBanner {
+    padding-top: 10px;
+    padding-right: -10px;
+    position: relative;
+    margin: 0px;
+    height: 30px;
+    width: 100%;
+    background-color: #4ED147;
+    text-align: right;
+}
+
+#main {
+    margin: auto;
+    height: auto;
+    width: 1000px;
+    position: relative;
+}
+
+/* Left side: */
+nav {
+    float: left;
+    position: relative;
+    width: 400px;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+#searchFilters {
+    padding: 5px;
+}
+
+#searchResults {
+    padding: 5px;
+
+}
+
+.singleSearchResult {
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    width: 80%;
+    height: auto;
+}
+
+.singleSearchResult #placeTitle {
+    text-decoration: bold;
+}
+
+.singleSearchResult #description {
+    text-decoration: none;
+}
+
+/* Right side: */
+article {
+    width: 599px;
+    height: 100%;
+    float: right;
+    position: relative;
+    background-color: #ffffff;
+    border-style: solid;
+    border-width: 1px;
+    border-right: none; 
+    border-bottom: none; 
+    border-top: none; 
+}
+
+/* map icon goes here  */
+#miniNavBar {
+    padding: 5px;
+    float: right; 
+    width: auto;
+}
+
+.list-right .place {
+     width: 460px; 
+     height: 100px;
+     background-color: #f81;
+     padding:20px;
+     margin:20px;
+}
+
+.list-right{
+    width: 500px;
+}
+
+.icons {
+    width: 30px;
+    height: 30px;  
+}
+
+#verticalTimeline {
+    /* Look for APIs (difficult) wait to implement */
+}
+
+#tourResult {
+
+}
+
+.tourEntry {
+
+}

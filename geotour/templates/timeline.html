@@ -1,0 +1,77 @@
+{% load staticfiles  %}
+
+<nav>
+<!--Search filters go here-->
+<div id="searchFilters">
+    <form method="POST">{% csrf_token %}
+        <div id="transpoIcons">
+            <img src="{% static 'images/car_icon.png' %}" id="carIcon" class="icons">
+            <img src="{% static 'images/bus_icon.png' %}" id="busIcon" class="icons">
+            <img src="{% static 'images/bike_icon.png' %}" id="bikeIcon" class="icons">
+            <img src="{% static 'images/walk_icon.png' %}" id="walkIcon" class="icons">
+        </div>
+        <div id="filterDropDowns">
+            <select id="poi">
+                <option name="amusement_park">Amusement Park</option>
+                <option name="aquarium">Aquarium</option>
+                <option name="art_gallery">Art Gallery</option>
+                <option name="zoo">Zoo</option>
+                <option name="museum">Museum</option>
+                <option name="bowling_alley">Bowling Alley</option>
+            </select>
+            <select id="food">
+                <option value="bakery">Bakery</option>
+                <option value="cafe">Cafe</option>
+                <option value="restaurant">Restaurant</option>
+                <option value="bar">Bar</option>
+                <option value="night_club">Night Club</option>
+            </select>
+            <select id="shop">
+                <option value="shopping_mall">Shopping Mall</option>
+                <option value="book_store">Book Store</option>
+                <option value="department_store">Department Store</option>
+                <option value="jewelry_store">Jewelry Store</option>
+                <option value="spa">Spa</option>
+            </select>
+        </div>
+        {% for area in areas %}
+        {{area}} 
+        <input type="checkbox" onclick="filter()" name="areas" value="{{area}}" id="areas">
+        {% endfor %}
+    </form>
+</div>
+
+<div id="searchResults">
+    <div class="list-left ui-sortable">
+		{% for place in places %}
+            <div class="singleSearchResults">
+                <div id="placeTitle">Place 1</div>
+                <div id="description">This is a place for blah</div>
+            </div>
+			<div class="singleSearchResults">Place 2</div>
+			<div class="singleSearchResults">{{place.name}}</div>
+			<div class="singleSearchResults place">Place 1</div>
+			<div class="singleSearchResults place">Place 2</div>
+			<div class="singleSearchResults place">{{place.name}}</div>
+		{% endfor %}
+	</div>
+</div>
+</nav>
+
+<article>
+    <div id="miniNavBar">
+        <img src="{% static 'images/gmaps.png' %}" id="gMapIcon" class="icons">
+    </div>
+	<!--
+	    <div id="verticalTimeline">
+	    </div>
+	  -->
+	<div id="tourResult">
+		<div class="list-right ui-sortable">
+		{% for place in places %}
+			<div class="place">Place 3</div>
+		    <div class="place" id='myplace'>{{place.name}}</div>
+		{% endfor %}
+		</div>
+	</div>
+</article>

@@ -1,9 +1,16 @@
 <!DOCTYPE html>
+
+{% load staticfiles  %}
+
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="/static_files/style.css">
+        <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "results.css" %}">
         <title>Plan a Day</title>
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="{% static "results.js" %}"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
         <script type="text/javascript">
             function filter() {
                 var data = {'tourId':'{{tourId}}'};
@@ -17,21 +24,26 @@
     </head>
 
     <body>
+        <div id="topBanner">Mini LOGO</div>
 
-            <form method="POST">{% csrf_token %}
-                <div id="areasForm">
-                    {% for area in areas %}
-                    {{area}} <input type="checkbox" onclick="filter()" name="areas" value="{{area}}" id="areas"><br />
-                    {% endfor %}
-                </div>
-            </form>
-        <div id="fill_in">
-            {% for place in places %}
-            <div>
-                <p>{{place.name}}</p>
-                <p>{{place.address}}</p>
-            </div>
-            {% endfor %}
-        </div>      
+        <div id="main">
+
+            {% include 'timeline.html' %}
+
+
+        <script type="text/javascript">
+            $('.list-left').sortable({
+                connectWith: '.list-right',
+            });
+
+            $('.list-right').sortable({
+                receive: function(event, ui) {
+                    $('.list-right .place').resizable({ handles: "s" });
+                }
+            });
+
+            $('.list-right .place').resizable({ handles: "s" });
+        </script>
+        </div>
     </body>
 </html>

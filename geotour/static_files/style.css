@@ -16,7 +16,7 @@
     margin: 0px;
 }
 
-/* Fancy Button (might need to move to top level css) */
+/* Fancy Button */
 .brightButton {
     -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
     -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -32,7 +32,7 @@
     display:inline-block;
     color:#666666;
     font-family:arial;
-    font-size:15px;
+    font-size:25px;
     font-weight:bold;
     padding:6px 24px;
     text-decoration:none;
