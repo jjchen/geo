@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from django.utils import timezone
 import datetime
@@ -33,3 +34,15 @@ class Place(models.Model):
     def __unicode__(self):
         return self.name
 
+class Area(models.Model):
+    interestType = models.CharField(max_length=200)
+
+class Tour(models.Model):
+	name = models.CharField(max_length=200)
+	fromAddress = models.CharField(max_length=200)
+	destination = models.CharField(max_length=200)
+	returnAddress = models.CharField(max_length=200)
+	startTime = models.DateTimeField(default=datetime.date.today())
+	endTime = models.DateTimeField(default=datetime.date.today())
+	transport = models.ManyToManyField(Transport)
+	areas =  models.ManyToManyField(Area)	

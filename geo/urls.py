@@ -9,6 +9,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'geo.views.home', name='home'),
     # url(r'^geo/', include('geo.foo.urls')),
 
+    #(r'^$', home),
+    url('', include('geotour.urls', namespace='geotour')),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

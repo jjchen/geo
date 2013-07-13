@@ -1,3 +1,5 @@
+import os
+
 # Django settings for oc project.
 
 DEBUG = False
@@ -142,23 +144,20 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django_cas.middleware.CASMiddleware',
-    'django.middleware.doc.XViewMiddleware'
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-CAS_SERVER_URL = 'https://fed.princeton.edu/cas/'
-CAS_REDIRECT_URL = '/frontend/'
-ROOT_URLCONF = 'oc.urls'
+ROOT_URLCONF = 'geo.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'oc.wsgi.application'
+WSGI_APPLICATION = 'geo.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),
 )
 
 INSTALLED_APPS = (
@@ -209,8 +208,5 @@ LOGGING = {
 }
 
 AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.facebook.FacebookBackend',
-    'django_cas.backends.CASBackend',
-    'django.contrib.auth.backends.ModelBackend'
 )
 

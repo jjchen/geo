@@ -1,0 +1,72 @@
+/* 
+ * Plan a day!
+ *
+ */
+
+/* Top level style */
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+/* Main box on front page */
+#home {
+    padding: 10px;
+    margin: 0 auto;
+    width: 800px;
+    height: 600px;
+    position: relative;
+    border: 1px solid #000000;
+}
+
+#homeMainForm {
+    position: relative;
+    border: 1px solid #000000;
+}
+
+#homeSubmit {
+    position: right;
+    border: 1px solid #000000;
+    width: 100px;
+}
+
+/* Fields on the main page */
+#destDiv {
+    position: relative;
+    border: 1px solid #000000;
+}
+
+#destField {
+    height: 25px;
+    width: 500px;
+}
+
+#startEnd {
+
+}
+
+.startEndField {
+
+}
+
+#startEnd {
+
+}
+
+#timeFrame {
+
+}
+
+#dateInput {
+
+}
+
+.timeInput {
+
+}
+
