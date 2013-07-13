@@ -19,10 +19,11 @@ def getUrl(lat, lng):
 def getPlaces(lat,lng):
   url = getUrl(lat,lng)
   json_object = get_json_object_from_url(url)
-  results = getResultsFromObject(json_object)
+  results = json_obj['results']
   #results.sort(key=itemgetter('name'))
   for result in results:
     print result['name']
+  return results
 
 def get_json_object_from_url(url):
   """Given a url of a query, returns an object with the results.

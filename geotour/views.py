@@ -5,6 +5,7 @@ from django.template.loader import get_template
 from django.template import Context
 from geotour.models import Place
 from geotour.models import Tour
+from geotour.models import LatLngs
 from django.template.defaulttags import csrf_token
 import datetime
 
@@ -19,11 +20,11 @@ def home(request):
 		tour = Tour.objects.create(destination=destination) #save needed? TODO(jisha)
 		tour.save()
 		latlng= LatLngs.objects.create(tour=tour)
-		latlng.save()
 		tour.fromAddress = request.POST['fromAddress']
 		tour.returnAddress = request.POST['returnAddress']
 		latlng.lat = request.POST['lat']
 		latlng.lng = request.POST['lng']
+		latlng.save()
 		fmt = '%m/%d/%Y %I:%M%p'
 		d = datetime.datetime.strptime(request.POST['date']+" "+request.POST['startTime'], fmt)
 		tour.startTime = d
@@ -39,11 +40,15 @@ def home(request):
 	return render(request, 'home.html', {})
 	
 
-def results(request, tourId):
-	tour = Tour.objects.get(id = tourId)
+# def results(request, tourId):
+# 	tour = Tour.objects.get(id = tourId)
+# 	placedict={}
+#     for item in getPlaces(lat, lng):
+#     	placedict['location'] = item['geometry']
+#     	placedict['name'] = item['name']
 
-	places = Place.objects.filter(tour = tour)
-	return render(request, 'home.html', {})
+# 	#places = Place.objects.filter(tour = tour)
+# 	return render(request, 'home.html', {})
 
 
 def update(request):
