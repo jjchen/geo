@@ -5,11 +5,11 @@ from operator import itemgetter
 globallat = 37.7749295
 globallng = -122.41941550000001 #San Fran
 
-key= "AIzaSyDcTs6ljMw-1EmOkjwbSbidyyGNXKhkJgc"
+key= "AIzaSyBAKb1W6-1QgdclZMWtrYmaEHn2p2Uy2Ww"
 firstU = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
 firstRadarU = "https://maps.googleapis.com/maps/api/place/radarsearch/json?location="
 secondU = "&radius=50000&sensor=false&key="+key
-placequery = "https://maps.googleapis.com/maps/api/place/details/json?sensor=false&key"+key
+placequery = "https://maps.googleapis.com/maps/api/place/details/json?sensor=false&key="+key
 
 samplereference = "CoQBcwAAAA6ZWWN-e-ZS-z_UcaM5us57lPRGr1bYmY9OW3b73F5lUaET4Nbs7LBaxz5RP86Ayc4ghOvwCEQUVe18SwTWmv8ssRvS7-DIu3bnRr3_N7Pbf1NJEz2h8CTvLNtXG6N_i1CqxwSG9_vhTVIbp-lErDD0TjRvM9q-M8ugASm-26BhEhBwFWRij0Uf1LgI06u60FhqGhTYfMGXr7oq8nVWZpPB-8OqdOzA7g"
 sampleplace = placequery+"&reference="+samplereference
@@ -61,17 +61,21 @@ def getRadarUrl(lat, lng):
   global firstU
   global secondU
   url = firstRadarU+str(lat)+","+str(lng)+secondU
-  print url
+  #print url
   return url
 
-def getFromRadar(results):
+def getFromRadar(results1):
   global placequery
   results=[]
-  for result in results: 
+  for result in results1: 
+    #print "in get from radar list"
     reference = result['reference']
     url = placequery+"&reference="+reference
+    #print url
     json_object = get_json_object_from_url(url)
-    results.append[json_object['result']]
+    if json_object['status']=="OK":
+      #print json_object['result']
+      results.append(json_object['result'])
   return results
 
 
@@ -81,7 +85,10 @@ def getFromRadar(results):
 def getPlaces(lat,lng):
   url = getUrl(lat,lng)
   json_obj = get_json_object_from_url(url)
-  results = json_obj['results']
+  if json_object['status']=="OK":
+    results = json_obj['results']
+  else:
+    results={}
   #results.sort(key=itemgetter('name'))
   for result in results:
     print result['name']
@@ -90,12 +97,15 @@ def getPlaces(lat,lng):
 def getMultipleAreas(lat,lng,areas):
   global globallat
   global globallng
-  print "inGetPlacesIn Area"
   url = getRadarUrl(lat,lng)
   url = url+"&types="+areas
+  print url
   json_obj = get_json_object_from_url(url)
-  results1 = json_obj['results']
-  results = getFromRadar(results1)
+  results=[]
+  print json_obj['status']
+  if json_obj['status']=="OK":
+    results1 = json_obj['results']
+    results = getFromRadar(results1)
 
   for result in results:
     print result['name']
@@ -109,7 +119,6 @@ def getPlacesInArea(lat, lng, area):
   url = getRadarUrl(lat,lng)
   if area in areas.keys():
     url = url+"&types="+area
-    print "url set"
   json_obj = get_json_object_from_url(url)
   results1 = json_obj['results']
   results = getFromRadar(results1)
