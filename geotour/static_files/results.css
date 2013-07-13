@@ -77,6 +77,11 @@ article {
     border-top: none; 
 }
 
+#gMapIcon {
+    width: 30px;
+    height: 30px;  
+}
+
 #verticalTimeline {
     /* Look for APIs (difficult) wait to implement */
 }
