@@ -1,0 +1,53 @@
+
+#topBanner {
+    padding-top: 10px;
+    padding-right: -10px;
+    margin: 0px;
+    height: 30px;
+    width: 100%;
+    background-color: #4ED147;
+    text-align: right;
+}
+
+#main {
+    padding-top: 10px;
+}
+
+/* Left side: */
+#leftColumn {
+
+}
+
+#searchFilters {
+
+}
+
+#searchResults {
+
+}
+
+.singleSearchResult {
+
+}
+
+/* Right side: */
+#rightColumn {
+    
+}
+
+/* map icon goes here  */
+#miniNavBar {
+    
+}
+
+#verticalTimeline {
+    /* Look for APIs (difficult) wait to implement */
+}
+
+#tourResult {
+
+}
+
+.tourEntry {
+
+}
