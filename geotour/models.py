@@ -24,13 +24,14 @@ class Tour(models.Model):
     areas =  models.ManyToManyField(Area)
     # lat = models.DecimalField(max_digits=10, decimal_places=10)
     # lng = models.DecimalField(max_digits=10, decimal_places=10)
+
     def __unicode__(self):
         return self.name   
 
-class LatLngs(models.Model):
-    tour = models.ForeignKey(Tour)
-    lat = models.DecimalField(max_digits=10, decimal_places=10)
-    lng = models.DecimalField(max_digits=10, decimal_places=10)
+# class LatLngs(models.Model):
+#     tour = models.ForeignKey(Tour)
+#     lat = models.DecimalField(max_digits=10, decimal_places=10)
+#     lng = models.DecimalField(max_digits=10, decimal_places=10)
 
 
 class Place(models.Model):

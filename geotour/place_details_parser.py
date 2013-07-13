@@ -3,9 +3,9 @@ import urllib2
 from operator import itemgetter
 
 key= "AIzaSyDcTs6ljMw-1EmOkjwbSbidyyGNXKhkJgc"
-firstU = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location"
-secondU = "&radius=50000&sensor=false&point_of_interest&key="+key
-url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.7749295,-122.41941550000001&radius=50000&sensor=false&point_of_interest&key="+key
+firstU = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
+secondU = "&radius=50000&sensor=false&key="+key
+url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.7749295,-122.41941550000001&radius=50000&sensor=false&key="+key
 
 def getUrl(lat, lng):
   global key
@@ -18,12 +18,24 @@ def getUrl(lat, lng):
 
 def getPlaces(lat,lng):
   url = getUrl(lat,lng)
+  json_obj = get_json_object_from_url(url)
+  results = json_obj['results']
+  #results.sort(key=itemgetter('name'))
+  for result in results:
+    print result['name']
+  return results
+
+def getPlacesInArea(lat, lng, area):
+  print "inGetPlaces"
+  url = getUrl(lat,lng)
+  url = url+"&types="+area
   json_object = get_json_object_from_url(url)
   results = json_obj['results']
   #results.sort(key=itemgetter('name'))
   for result in results:
     print result['name']
   return results
+
 
 def get_json_object_from_url(url):
   """Given a url of a query, returns an object with the results.
