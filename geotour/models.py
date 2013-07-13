@@ -10,7 +10,6 @@ class Transport(models.Model):
 
 class Area(models.Model):
     interestType = models.CharField(max_length=200)
-       point_of_interest
     def __unicode__(self):
         return self.interestType
 
