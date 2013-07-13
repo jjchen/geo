@@ -56,8 +56,8 @@
                     //    alert($('this').height()/100.0)
                         var time = $(this).height()/100.0;
                         var hour = Math.floor(time);
-                        var minutes = (time * 60) % 60;
-                        $(this).html($(this).html() + "<br>" +hour + "h "+Math.round(minutes)+"m");
+                        // var minutes = (time * 60) % 60;
+                        // $(this).html($(this).html() + "<br>" +hour + "h "+Math.round(minutes)+"m");
                          durations.push($(this).height()/100.0);
                     });
                     data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations, 'csrfmiddlewaretoken': '{{ csrf_token }}'}
@@ -80,8 +80,8 @@
                     //    alert($(this).height()/100.0)
                         var time = $(this).height()/100.0;
                         var hour = Math.floor(time);
-                        var minutes = (time * 60) % 60;
-                        $(this).html($(this).html() + "<br> " +hour + "h "+Math.round(minutes)+"m");
+                        // var minutes = (time * 60) % 60;
+                        // $(this).html($(this).html() + "<br> " +hour + "h "+Math.round(minutes)+"m");
                         durations.push($(this).height()/100.0);
                     });
                     data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations, 'csrfmiddlewaretoken': '{{ csrf_token }}'}
