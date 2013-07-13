@@ -8,13 +8,12 @@ from geotour.models import Place
 from geotour.models import Tour
 from django.template.defaulttags import csrf_token
 
-include place_details_parser.py
-AREAS = [""]
+from place_details_parser import *
 
 def home(request):
 	if request.method == 'POST':
 		destination = request.POST['destination']
-		tour = Tour('destination': destination) #save needed? TODO(jisha)
+		tour = Tour.objects.create(destination=destination) #save needed? TODO(jisha)
 		tour.fromAddress = request.POST['fromAddress']
 		tour.returnAddress = request.POST['returnAddress']
 		tour.startTime = request.POST['startTime']
@@ -22,7 +21,7 @@ def home(request):
 		tour.save()	
 		#get_json_object_from_url(destination)
 		# tourId = tour.id
-		tourId = 1
+		tourId = 1 #take this out
 		return HttpResponseRedirect('/results/'+str(tourId))
 	return render(request, 'home.html', {})
 
@@ -43,8 +42,10 @@ def filter(request):
 		areas_list = []
 		for area in areas:
 			try: 
-				areas_list += [Area.objects.get(name = area)]	
-	return render_to_response('timeline.html', places, context_instance=RequestContexxt(request))
+				areas_list += [Area.objects.get(name = area)]
+			except:
+				pass
+	return render_to_response('timeline.html', places, context_instance=RequestContext(request))
 
 def test(request):
 	t = get_template('test.html')
