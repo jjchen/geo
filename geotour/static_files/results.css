@@ -9,16 +9,21 @@ body {
 }
 
 #topBanner {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
+    padding-top: 20px;
+    padding-bottom: 5px;
     position: relative;
     margin: 0px;
     height: 30px;
     width: 100%;
-    background-color: #4ED147;
-    font-family: "Great Vibes", cursive;
-    font-size: 20px; 
+    background-color: #78D683;
+}
+
+#topBanner h1 {
+    width: 1000px;
+    position: relative; 
+    margin: auto;
+    font-family: "Muli", sans-serif;
+    font-size: 35px; 
     text-align: right;
 }
 
@@ -38,25 +43,34 @@ nav {
     background-color: #ffffff;
 }
 
+#searchFilters {
+    padding: 5px;
+}
+
 #transpoIcons {
     padding: 10px;
     margin: auto;
     text-align: center;
 }
 
-#searchFilters {
-    padding: 5px;
+#filterOptions {
+    padding: 10px;
+    margin: auto;
+    text-align: center;
 }
 
 #poiList {
+    padding: 10px;
     display: none;
 }
 
 #foodList {
+    padding: 10px;
     display: none;
 }
 
 #shopList {
+    padding: 10px;
     display: none;
 }
 
@@ -154,3 +168,4 @@ article {
 .tourEntry {
 
 }
+
