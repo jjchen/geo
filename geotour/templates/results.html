@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/static_files/style.css">
+        <title>Plan a Day</title>
+    </head>
+    <body>
+        {% for place in places %}
+        <div>
+            <p>{{place.name}}</p>
+            <p>{{place.address}}</p>
+        </div>
+        {% endfor %}      
+    </body>
+</html>
