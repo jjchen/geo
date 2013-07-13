@@ -53,12 +53,7 @@
 <div id="searchResults">
     <div class="list-left ui-sortable">
 		{% for place in searchResults %}
-			<div class="singleSearchResults place" id='91'>Place 1</div>
-			<div class="singleSearchResults place" id='90'>Place 2</div>
 			<div class="singleSearchResults place" id='{{place.id}}'>{{place.name}}</div>
-            <div class="singleSearchResults place">
-                <div id="placeTitle">Place 1</div>
-                <div id="description">This is a place for blah</div>
             </div>
 		{% endfor %}
 	</div>
@@ -77,8 +72,7 @@
 	<div id="tourResult">
 		<div class="list-right ui-sortable" id="blah">
 		{% for place in tourPlaces %}
-			<div class="place" id='{{place.id}}'>{{place.id}} Place 3</div>
-		    <div class="place" id='{{place.id}}'>{{place.name}} {{place.id}}</div>
+		    <div class="place" id='{{place.id}}'>{{place.name}}</div>
 		{% endfor %}
 		</div>
 	</div>
