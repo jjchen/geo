@@ -122,7 +122,7 @@ def getPlacesInArea(lat, lng, area):
     url = url+"&types="+area
   json_obj = get_json_object_from_url(url)
   results1 = json_obj['results']
-  results1= results[:10]
+  results1= results1[:10]
   results = getFromRadar(results1)
 
   #results.sort(key=itemgetter('name'))
