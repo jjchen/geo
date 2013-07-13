@@ -36,22 +36,35 @@ def home(request):
 		tourId = tour.id
 		# tourId = 1 #take this out
 		return HttpResponseRedirect('/results/'+str(tourId))
-	return HttpResponseRedirect('/results/'+str(1))
+	return render(request, 'home.html', {})
 	
 
 def results(request, tourId):
 	tour = Tour.objects.get(id = tourId)
 
 	places = Place.objects.filter(tour = tour)
+	return render(request, 'home.html', {})
 
 
+def update(request):
+	return render(request, 'results.html', {})
+
+def results(request, tourId):
+	tour = Tour.objects.get(id = tourId)
+	places = Place.objects.filter(tour = tour)
+	searchResults = []
+	tourPlaces = []
 	return render(request, 'results.html', {'tourId': tourId,
-		'places': places
+		'searchResults': places, 'tourPlaces': places
 		})
 
 def change(request):
 	tourId = request.POST['tourId']
 	areas = request.POST.getlist('areas')
+
+	searchResults = []
+	tourPlaces = []
+
 	tour = Tour.objects.get(id = tourId)
 	places = []
 	if areas != None and len(areas) != 0:
@@ -61,9 +74,7 @@ def change(request):
 				areas_list += [Area.objects.get(name = area)]
 			except:
 				pass
-	#add areas to database?
-
-	return render_to_response('timeline.html', {'tourId': tourId, 'places': places},
+	return render_to_response('timeline.html', {'tourId': tourId, 'searchResults': searchResults, 'tourPlaces': tourPlaces},
 	 context_instance=RequestContext(request))
 
 def test(request):
