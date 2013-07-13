@@ -3,6 +3,7 @@
 <nav>
 <!--Search filters go here-->
 <div id="searchFilters">
+    <h3>Specify your interests:</h3>
     <form method="POST">{% csrf_token %}
         <div id="transpoIcons">
             <img src="{% static 'images/car_icon.png' %}" id="carIcon" class="icons">
@@ -22,8 +23,8 @@
                 <input type="checkbox" onclick="filter()" name="art_gallery">Art Gallery</input><br>
                 <input type="checkbox" onclick="filter()" name="bowling_alley">Bowling Alley</input><br>
                 <input type="checkbox" onclick="filter()" name="movie_theater">Movie Theater</input><br>
-                <input type="checkbox" onclick="filter()" name="museum">Museum"</input><br>
-                <input type="checkbox" onclick="filter()" name="zoo">Zoo"</input><br>
+                <input type="checkbox" onclick="filter()" name="museum">Museum</input><br>
+                <input type="checkbox" onclick="filter()" name="zoo">Zoo</input><br>
             </div>
             <div id="foodList">
                 <input type="checkbox" onclick="filter()" name="food">Food</input><br>
@@ -68,6 +69,7 @@
     <div id="miniNavBar">
         <img src="{% static 'images/gmaps.png' %}" id="gMapIcon" class="icons">
     </div>
+    <h2>Your trip:</h2>
 	<!--
 	    <div id="verticalTimeline">
 	    </div>
