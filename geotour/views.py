@@ -30,7 +30,7 @@ def results(request, tourId):
 	tour = Tour.objects.get(id = tourId)
 	places = Place.objects.filter(tour = tour)
 
-	return render(request, 'results.html', {
+	return render(request, 'results.html', {'tourId': tourId
 		'places': places
 		})
 
@@ -43,7 +43,8 @@ def filter(request):
 		areas_list = []
 		for area in areas:
 			try: 
-				areas_list += [Area.objects.get(name = area)]	
+				areas_list += [Area.objects.get(name = area)]
+				#get new places list based on areas_list	
 	return render_to_response('timeline.html', places, context_instance=RequestContexxt(request))
 
 def test(request):

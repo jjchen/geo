@@ -26,12 +26,7 @@
                 </div>
             </form>
         <div id="fill_in">
-            {% for place in places %}
-            <div>
-                <p>{{place.name}}</p>
-                <p>{{place.address}}</p>
-            </div>
-            {% endfor %}
+            {% include 'timeline.html' %}
         </div>      
     </body>
 </html>
