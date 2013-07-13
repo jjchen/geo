@@ -7,6 +7,7 @@ from django.template import Context
 from geotour.models import Place
 from geotour.models import Tour
 from django.template.defaulttags import csrf_token
+import datetime
 
 from place_details_parser import *
 
@@ -18,8 +19,10 @@ def home(request):
 		tour = Tour.objects.create(destination=destination) #save needed? TODO(jisha)
 		tour.fromAddress = request.POST['fromAddress']
 		tour.returnAddress = request.POST['returnAddress']
-		tour.startTime = request.POST['startTime']
-		tour.endTime = request.POST['endTime']
+		fmt = '%m/%d/%Y %H:%M'
+		d = datetime.datetime.strptime('05/05/2013 5:10', fmt)
+		# tour.startTime = request.POST['startTime']
+		# tour.endTime = request.POST['endTime']
 		tour.save()	
 		#get_json_object_from_url(destination)
 		tourId = tour.id
