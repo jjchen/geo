@@ -38,3 +38,28 @@ class Place(models.Model):
 
 class Area(models.Model):
     interestType = models.CharField(max_length=200)	
+
+
+# amusement_park
+# aquarium
+# art_gallery
+# zoo
+# movie_theater
+# museum
+# bowling_alley
+
+
+# food
+# bakery
+# cafe
+# restaurant
+# bar
+# night_clubpark
+
+
+# shopping_mall
+# book_store
+# clothing_store
+# department_store
+# jewelry_store
+# spa

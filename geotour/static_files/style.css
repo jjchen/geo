@@ -3,87 +3,17 @@
  *
  */
 
+/* Use of fonts:
+ *  
+ *  font-family: 'Lora', serif;
+ *  font-family: 'Muli', sans-serif;
+ *  font-family: 'Great Vibes', cursive;
+ */
+
 /* Top level style */
 * {
     padding: 0px;
     margin: 0px;
-}
-
-body {
-    padding-top: 5%;
-    margin: 0px;
-}
-
-/* Main boxes on front page */
-#home {
-    padding: 10px;
-    margin: auto;
-    width: 800px;
-    height: 600px;
-    top: 50%;
-    position: relative;
-    border: 1px solid #D6D6D6;
-}
-
-#bigLogo {
-    border: 1px solid #D6D6D6;
-    width: auto;
-    height: 200px;
-    font-size: 90px;
-}
-
-#homeMainForm {
-    padding: 20px;
-    position: relative;
-    margin: auto;
-}
-
-#homeSubmit {
-    float: right;
-    width: 100px;
-}
-
-/* Fields on the main page */
-#destDiv {
-    position: relative;
-    padding: 10px;
-    margin: auto;
-    width: 750px;
-}
-
-#destField {
-    height: 50px;
-    width: 750px;
-    font-size: 50px;
-}
-
-#startEnd {
-    position: relative;
-    padding: 10px;
-    margin: auto;
-}
-
-#startField {
-
-}
-
-#endField {
-    display: none;
-}
-
-#timeFrame {
-    position: relative;
-    padding: 10px;
-    margin: auto;
-
-}
-
-#dateInput {
-
-}
-
-.timeInput {
-
 }
 
 /* Fancy Button (might need to move to top level css) */

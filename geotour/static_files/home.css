@@ -1,0 +1,93 @@
+body {
+    padding-top: 5%;
+    margin: 0px;
+    font-family: 'Lora', serif;
+}
+
+/* Main boxes on front page */
+#home {
+    padding: 10px;
+    margin: auto;
+    width: 800px;
+    height: 600px;
+    top: 50%;
+    position: relative;
+    border: 1px solid #D6D6D6;
+}
+
+#bigLogo {
+    border: 1px solid #D6D6D6;
+    width: auto;
+    height: 200px;
+    font-size: 90px;
+    font-family: 'Great Vibes', cursive;
+}
+
+#homeMainForm {
+    padding: 20px;
+    position: relative;
+    margin: auto;
+}
+
+#homeSubmit {
+    float: right;
+    width: 100px;
+}
+
+/* Fields on the main page */
+#destDiv {
+    position: relative;
+    padding: 10px;
+    margin: auto;
+    width: 750px;
+}
+
+#destField {
+    height: 70px;
+    width: 750px;
+    font-family: 'Lora', serif;
+    font-size: 50px;
+}
+
+#startEnd {
+    position: relative;
+    padding: 10px;
+    margin: auto;
+}
+
+.startEndField {
+    height: 30px;
+    width: 400px;
+    font-size: 25px;
+}
+
+#startField {
+
+}
+
+#endField {
+    display: none;
+}
+
+#showEndField {
+}
+
+#showEndFieldText {
+    padding-top: -5px;
+    font-size: 10px;
+}
+
+#timeFrame {
+    position: relative;
+    padding: 10px;
+    margin: auto;
+
+}
+
+#dateInput {
+
+}
+
+.timeInput {
+
+}
