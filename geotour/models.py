@@ -1,5 +1,6 @@
 import datetime
 from django.db import models
+import datetime
 
 class Transport(models.Model):
     transportType = models.CharField(max_length=200)
