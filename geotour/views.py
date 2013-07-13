@@ -6,26 +6,14 @@ from django.template import Context
 from geotour.models import Place
 
 def home(request):
-    t = get_template('home.html')
-    html = t.render(Context({}))
-    return HttpResponse(html)
-
-
-# class SearchForm(forms.Form):
-
-
-# def home(request):
-# 	# if request.method == 'POST':
-# 	# 	form = SearchForm(request.POST)
-# 	# 	if form.is_valid():
-# 	# 		data = form.cleaned_data
-# 	# 		tour = Tour()
-# 	# 		tour.save()
-
-# 	# return render(request, 'home.html', {
-# 	# 	'form': form
-# 	# 	})
-# 	return render(request, 'home.html')
+	if request.method == 'POST':
+		# destination = request.POST['destination']
+		# tour = Tour('name': request.POST['name'])
+		# tour.save()
+		return HttpRequestRedirect('/results')
+	t = get_template('home.html')
+	html = t.render(Context({}))
+	return HttpResponse(html)
 
 def results(request):
 	places = Place.objects.all()

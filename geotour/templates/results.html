@@ -5,6 +5,11 @@
         <title>Plan a Day</title>
     </head>
     <body>
-     {{places}}      
+        {% for place in places %}
+        <div>
+            <p>{{place.name}}</p>
+            <p>{{place.address}}</p>
+        </div>
+        {% endfor %}      
     </body>
 </html>

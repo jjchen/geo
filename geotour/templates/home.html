@@ -9,7 +9,7 @@
             <div id="bigLogo">
                 LOGO GOES HERE
             </div>
-            <form method="POST">
+            <form method="POST">{% csrf_token %}
                 <div id="homeMainForm">
                     <div id="destDiv">
                         <input type="text" name="destination" id="destField">
