@@ -11,6 +11,7 @@ body {
 #topBanner {
     padding-top: 10px;
     padding-bottom: 10px;
+    padding-right: 10px;
     position: relative;
     margin: 0px;
     height: 30px;
@@ -35,6 +36,12 @@ nav {
     width: 400px;
     height: 100%;
     background-color: #ffffff;
+}
+
+#transpoIcons {
+    padding: 10px;
+    margin: auto;
+    text-align: center;
 }
 
 #searchFilters {
@@ -97,12 +104,14 @@ nav {
 
 /* Right side: */
 article {
-    width: 599px;
+    padding: 5px;
+    width: 589px;
     height: 100%;
     float: right;
     position: relative;
     background-color: #ffffff;
     border-style: solid;
+    border-color: #d6d6d6;
     border-width: 1px;
     border-right: none; 
     border-bottom: none; 
@@ -130,7 +139,8 @@ article {
 
 .icons {
     width: 30px;
-    height: 30px;  
+    height: 30px;
+    background-size: 50px; 
 }
 
 #verticalTimeline {

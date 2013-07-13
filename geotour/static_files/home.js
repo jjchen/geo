@@ -9,4 +9,5 @@ var addEndField = function() {
 
 $(document).ready(function() {
     $("#dateInput").datepicker();
+    $(".timeInput").timepicker();
 });

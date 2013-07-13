@@ -68,7 +68,8 @@ def home(request):
 def update(request):
     global lat
     global lng
-    return render(request, 'results.html', {})
+	print "in update"
+	return render(request, 'results.html', {})
 
 def results(request, tourId):
     global lat

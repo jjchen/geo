@@ -9,11 +9,17 @@
         <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "home.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "datepicker/css/datepicker.css" %}">
+        <link rel="stylesheet" type="text/css" href="http://jonthornton.github.io/jquery-timepicker/jquery.timepicker.css" %}">
+
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" media="screen"
+             href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
 
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="{% static "datepicker/js/bootstrap-datepicker.js" %} "></script>
         <script src="{% static "home.js" %}"></script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="http://jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
         <title>Plan a Day</title>
     </head>
     <body>
@@ -75,8 +81,8 @@
 
             $("#submitButton").click(function(e) {
                 cityToLatLng($("#destField").val(), function(latLng){
-                    alert("hi");
-                    alert(latLng);
+           //         alert("hi");
+           //         alert(latLng);
                     var lat = latLng[0];
                     var lng = latLng[1];
                     var input = $("<input>").attr("type", "hidden").attr("name", "lat").val(lat);
@@ -86,7 +92,7 @@
                     var latLng = [1, 2];
 
                     data = $('#mainForm').serialize()
-                    alert(data);
+           //         alert(data);
                     $('#mainForm').submit();
                       });
                 return false;
