@@ -3,7 +3,18 @@
     <head>
         <link rel="stylesheet" type="text/css" href="/static_files/style.css">
         <title>Plan a Day</title>
+        <script type="text/javascript">
+            function filter() {
+                var data = {'tourId':'{{tourId}}'};
+                data += $('#areasForm').serialize();
+                $.post('{% url "geotour:change" %}', data, function(htmlResponse) {
+                    var element = document.getElementById('fill_in');
+                    element.innerHTML = htmlResponse;
+                });
+            }
+        </script>
     </head>
+
     <body>
 
             <form method="POST">{% csrf_token %}
@@ -13,12 +24,13 @@
                     {% endfor %}
                 </div>
             </form>
-
-        {% for place in places %}
-        <div>
-            <p>{{place.name}}</p>
-            <p>{{place.address}}</p>
-        </div>
-        {% endfor %}      
+        <div id="fill_in">
+            {% for place in places %}
+            <div>
+                <p>{{place.name}}</p>
+                <p>{{place.address}}</p>
+            </div>
+            {% endfor %}
+        </div>      
     </body>
 </html>

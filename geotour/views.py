@@ -26,6 +26,18 @@ def results(request, tourId):
 		'places': places
 		})
 
+def filter(request):
+	tourId = request.POST['tourId']
+	areas = request.POST.getlist('areas')
+	places = []
+	tour = Tour.objects.get(id = tourId)
+	if areas != None and len(areas) != 0:
+		areas_list = []
+		for area in areas:
+			try: 
+				areas_list += [Area.objects.get(name = area)]	
+	return render_to_response('timeline.html', places, context_instance=RequestContexxt(request))
+
 def test(request):
 	t = get_template('test.html')
 	html = t.render(Context({}))
