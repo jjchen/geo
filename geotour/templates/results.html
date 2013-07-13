@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="../static_files/results.css">
         <title>Plan a Day</title>
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="../static_files/results.js"></script>
         <script type="text/javascript">
             function filter() {
                 var data = {'tourId':'{{tourId}}'};
@@ -20,21 +21,39 @@
     <body>
         <div id="topBanner">Mini LOGO</div>
         <div id="main">
-            <form method="POST">{% csrf_token %}
-                <div id="areasForm">
-                    {% for area in areas %}
-                    {{area}} <input type="checkbox" onclick="filter()" name="areas" value="{{area}}" id="areas"><br />
+            <nav>
+                <!--Search filters go here-->
+                <div id="searchFilters">
+                    <form method="POST">{% csrf_token %}
+                        {% for area in areas %}
+                        {{area}} 
+                        <input type="checkbox" onclick="filter()" name="areas" value="{{area}}" id="areas">
+                        {% endfor %}
+                    </form>
+                </div>
+      
+                <div id="searchResults">
+                    {% for place in places %}
+                    <div class="singleSearchResults">
+                        <p>{{place.name}}</p>
+                        <p>{{place.address}}</p>
+                    </div>
                     {% endfor %}
                 </div>
-            </form>
-        <div id="fill_in">
-            {% for place in places %}
-            <div>
-                <p>{{place.name}}</p>
-                <p>{{place.address}}</p>
-            </div>
-            {% endfor %}
-        </div>
-    </div>      
+            </nav>
+
+            <article>
+                <div id="miniNavBar">
+                    map icon go here ^_^
+                </div>
+                <!--
+                    <div id="verticalTimeline">
+                    </div>
+                  -->
+                <div id="tourResult">
+                </div>
+                </article>
+
+        </div>      
     </body>
 </html>
