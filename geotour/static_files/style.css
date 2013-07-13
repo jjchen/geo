@@ -39,6 +39,10 @@
     text-shadow:1px 1px 0px #ffffff;
 }
 
+.small {
+    font-size:12px;
+}
+
 .brightButton:hover {
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff) );
     background:-moz-linear-gradient( center top, #f6f6f6 5%, #ffffff 100% );

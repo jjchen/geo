@@ -1,3 +1,17 @@
+var listTypes = ["poiList", "foodList", "shopList"];
+
+var toggleList = function(type) {
+    $("#"+type).show();
+
+    for (var i = 0; i < listTypes.length; i++) {
+        if (listTypes[i] != type) {
+            $("#"+listTypes[i]).hide();
+            console.log(listTypes[i] + " is hidden!");
+        }
+    }
+
+};
+
 var openGoogleMaps = function() {
     alert("Need to make maps pop up!");
 };

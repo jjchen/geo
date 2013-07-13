@@ -1,4 +1,3 @@
-
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -29,8 +28,8 @@ def home(request):
 		#get_json_object_from_url(destination)
 		tourId = tour.id
 		# tourId = 1 #take this out
-		return HttpResponseRedirect('/results/'+str(tourId))
-	return render(request, 'home.html', {})
+	return HttpResponseRedirect('/results/'+str(tourId))
+	
 
 def update(request):
 	return render(request, 'results.html', {})
@@ -47,9 +46,12 @@ def results(request, tourId):
 def change(request):
 	tourId = request.POST['tourId']
 	areas = request.POST.getlist('areas')
+
 	searchResults = []
 	tourPlaces = []
+
 	tour = Tour.objects.get(id = tourId)
+	places = []
 	if areas != None and len(areas) != 0:
 		areas_list = []
 		for area in areas:

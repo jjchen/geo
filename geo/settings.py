@@ -26,6 +26,8 @@ SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
 SOCIAL_AUTH_USER_MODEL = 'frontend.MyUser'
 
 ADMINS = (
+    ('Jisha Kambo', 'jisha.k9@gmail.com'),
+    ('jisha2', 'jk2228@cornell.edu')
     # ('Your Name', 'your_email@example.com'),
 )
 

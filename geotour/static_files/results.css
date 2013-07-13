@@ -10,12 +10,14 @@ body {
 
 #topBanner {
     padding-top: 10px;
-    padding-right: -10px;
+    padding-bottom: 10px;
     position: relative;
     margin: 0px;
     height: 30px;
     width: 100%;
     background-color: #4ED147;
+    font-family: "Great Vibes", cursive;
+    font-size: 20px; 
     text-align: right;
 }
 
@@ -37,6 +39,18 @@ nav {
 
 #searchFilters {
     padding: 5px;
+}
+
+#poiList {
+    display: none;
+}
+
+#foodList {
+    display: none;
+}
+
+#shopList {
+    display: none;
 }
 
 #searchResults {
@@ -67,9 +81,18 @@ nav {
 
 .singleSearchResult {
     position: relative;
-    background-color: #ffffff;
+    margin: 5px;
+    background-color: #f81;
     width: 80%;
     height: auto;
+}
+
+.singleSearchResult #placeTitle {
+    text-decoration: bold;
+}
+
+.singleSearchResult #description {
+    text-decoration: none;
 }
 
 /* Right side: */
@@ -91,11 +114,6 @@ article {
     padding: 5px;
     float: right; 
     width: auto;
-    border-style: solid;
-    border-width: 1px;
-    border-right: none; 
-    border-left: none; 
-    border-top: none; 
 }
 
 .list-right .place {
@@ -110,7 +128,7 @@ article {
     width: 500px;
 }
 
-#gMapIcon {
+.icons {
     width: 30px;
     height: 30px;  
 }
