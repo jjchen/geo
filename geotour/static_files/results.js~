@@ -1,6 +1,9 @@
 var listTypes = ["poiList", "foodList", "shopList"];
 
+var modeOfTransport = "car";
+
 var toggleList = function(type) {
+
     $("#"+type).show();
 
     for (var i = 0; i < listTypes.length; i++) {
@@ -14,16 +17,26 @@ var toggleList = function(type) {
 
 var chooseTranspo = function(e) {
     var elementId = e.srcElement.id;
-    console.log("You chose: " + elementId + " as your transportation mode");
     $(".icons").css("border", "none");
     $("#" + elementId).css("border", "1px solid #000000");
+    modeOfTransport = elementId.slice(0, elementId.lastIndexOf("I"));
 };
 
 var openGoogleMaps = function() {
-    var lat = 30.267153;
-    var lng = -97.74306079999997;
+    // TODO: show directions, not just picture of starting point
+    var lat = lats[0];
+    var lng = lngs[0];
+    if (lat === undefined || lng === undefined) {
+	// default to San Fransisco
+        lat = 37.7749295;
+	lng = -122.41941550000001;
     $.colorbox({html:'<img src="http://maps.googleapis.com/maps/api/staticmap?center='
         +lat+','+lng+'&zoom=8&size=800x400&sensor=false" width="800" height="400">'});
+};
+
+var deleteBox = function(e) {
+    var element = e.srcElement.parentNode.parentNode;
+    element.parentNode.removeChild(element);
 };
 
 var resizePage = function() {
@@ -51,6 +64,10 @@ $(window).load(function() {
     var allTranspoIcons = document.getElementsByClassName("icons");
     for (var i = 0; i < allTranspoIcons.length; i++) {
         allTranspoIcons[i].addEventListener("click", chooseTranspo, false);
+    }
+    var deleteButtons = document.getElementsByClassName("deleteButton");
+    for (var i = 0; i < deleteButtons.length; i++) {
+        deleteButtons[i].addEventListener("click", deleteBox, false);
     }
 });
 
