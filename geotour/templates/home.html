@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href='http://fonts.googleapis.com/css?family=Lora|Muli|Great+Vibes' rel='stylesheet' type='text/css'>
+
         <link rel="stylesheet" type="text/css" href="../static_files/style.css">
+        <link rel="stylesheet" type="text/css" href="../static_files/home.css">
+        <link rel="stylesheet" type="text/css" href="../static_files/datepicker/css/datepicker.css">
+
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="../static_files/datepicker/js/bootstrap-datepicker.js"></script>
+        <script src="../static_files/home.js"></script>
         <title>Plan a Day</title>
     </head>
     <body>
         <div id="home">
             <div id="bigLogo">
-                LOGO GOES HERE
+                Plan a Day
             </div>
             <form method="POST">{% csrf_token %}
                 <div id="homeMainForm">
@@ -19,14 +26,19 @@
                     </div>
 
                     <div id="startEnd">
-                        <input type="text" name="from" id="startField"
+                        <div id="dateDiv" data-date-format="dd-mm-yyyy">
+                            <input type="text" name="from" id="startField" class="startEndField"
                             placeHolder="Starting from...">
-                        <div id="showEndField"><a href=""></a></div>
-                        <input type="text" name="return" id="endField">
+                        </div>
+                            <div id="showEndField" onclick="addEndField()">
+                                <span id="showEndFieldText">Not returning here?</span>
+                            <input type="text" name="return" id="endField" class="startEndField"
+                            placeHolder="Ending at...">
+                            </div>
                     </div>
 
                     <div id="timeFrame">
-                        <input type="text" name="date" id="dateInput"
+                        <input type="text" name="date" id="dateInput" class="datePicker"
                             placeHolder="Date">
                         <input type="text" name="startTime" class="timeInput"
                             placeHolder="Start Time">
