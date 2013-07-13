@@ -46,7 +46,7 @@
                     $('.list-right .place').each(function(index) {
                         places.push($(this).attr('id'));
                     //    alert($('this').height()/100.0)
-                        var time = $('this').heigth()/100.0;
+                        var time = $('this').height()/100.0;
                         var hour = Math.floor(time);
                         var minutes = (time * 60) % 60;
 
@@ -57,7 +57,8 @@
 
                     });
                     $('.list-right .place').resizable({ handles: "s" });
-                }
+                       
+                 }
             });
 
             $('.list-right .place').resizable({ handles: "s", 

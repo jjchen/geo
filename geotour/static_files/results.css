@@ -140,6 +140,8 @@ article {
     padding: 5px;
     float: right; 
     width: auto;
+    top: 0;
+    right: 0;
 }
 
 .list-right .place {
