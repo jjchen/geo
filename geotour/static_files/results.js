@@ -9,7 +9,6 @@ var toggleList = function(type) {
     for (var i = 0; i < listTypes.length; i++) {
         if (listTypes[i] != type) {
             $("#"+listTypes[i]).hide();
-            console.log(listTypes[i] + " is hidden!");
         }
     }
 
@@ -23,9 +22,14 @@ var chooseTranspo = function(e) {
 };
 
 var openGoogleMaps = function() {
-    // TODO: get real lat and lng; show directions if possible
-    var lat = 30.267153;
-    var lng = -97.74306079999997;
+    // TODO: show directions, not just picture of starting point
+    var lat = lats[0];
+    var lng = lngs[0];
+    if (lat === undefined || lng === undefined) {
+	// default to San Fransisco
+        lat = 37.7749295;
+	lng = -122.41941550000001;
+    }
     $.colorbox({html:'<img src="http://maps.googleapis.com/maps/api/staticmap?center='
         +lat+','+lng+'&zoom=8&size=800x400&sensor=false" width="800" height="400">'});
 };
