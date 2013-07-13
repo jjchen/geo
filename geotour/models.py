@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 class Tour(models.Model):
 	name = models.CharField(max_length=200)
