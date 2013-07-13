@@ -85,7 +85,7 @@ def getFromRadar(results1):
 def getPlaces(lat,lng):
   url = getUrl(lat,lng)
   json_obj = get_json_object_from_url(url)
-  if json_object['status']=="OK":
+  if json_obj['status']=="OK":
     results = json_obj['results']
   else:
     results={}

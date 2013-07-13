@@ -14,7 +14,6 @@
             var lats = [];
             var lngs = [];
             {% for place in tourPlaces %}
-                alert({{place.address}});
                 lats.push({{place.address}});
                 lngs.push({{place.details}});
             {% endfor %} 
@@ -26,7 +25,6 @@
         <script type="text/javascript">
             function filter() {
                 var data = {'tourId':'{{tourId}}', 'csrfmiddlewaretoken': '{{ csrf_token }}', 'areas' : $('#areasForm').serialize()};
-                alert(data);
                 $.post('{% url "geotour:change" %}', data, function(htmlResponse) {
                     var element = document.getElementById('fill_in');
                     element.innerHTML = htmlResponse;
