@@ -75,8 +75,8 @@
 
             $("#submitButton").click(function(e) {
                 cityToLatLng($("#destField").val(), function(latLng){
-                    alert("hi");
-                    alert(latLng);
+           //         alert("hi");
+           //         alert(latLng);
                     var lat = latLng[0];
                     var lng = latLng[1];
                     var input = $("<input>").attr("type", "hidden").attr("name", "lat").val(lat);
@@ -86,7 +86,7 @@
                     var latLng = [1, 2];
 
                     data = $('#mainForm').serialize()
-                    alert(data);
+           //         alert(data);
                     $('#mainForm').submit();
                       });
                 return false;
