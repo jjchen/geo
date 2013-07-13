@@ -10,8 +10,7 @@
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="{% static "results.js" %}"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-        <script type="text/javascript"
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
         <script type="text/javascript">
             function filter() {
                 var data = {'tourId':'{{tourId}}'};
@@ -34,12 +33,16 @@
 
         <script type="text/javascript">
             $('.list-left').sortable({
-                connectWith: '.list-right'
+                connectWith: '.list-right',
             });
 
-            $('.list-right').sortable();
+            $('.list-right').sortable({
+                receive: function(event, ui) {
+                    $('.list-right .place').resizable({ handles: "s" });
+                }
+            });
 
-            $('#myplace').resizeable({handles: 's'});
+            $('.list-right .place').resizable({ handles: "s" });
         </script>
         </div>
     </body>
