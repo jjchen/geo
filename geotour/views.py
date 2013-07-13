@@ -1,6 +1,7 @@
 
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.template.loader import get_template
 from django.template import Context
 from geotour.models import Place
@@ -11,7 +12,7 @@ def home(request):
 		# destination = request.POST['destination']
 		# tour = Tour('name': request.POST['name'])
 		# tour.save()
-		return HttpRequestRedirect('/results')
+		return HttpResponseRedirect('/results')
 	return render(request, 'home.html', {})
 
 def results(request):

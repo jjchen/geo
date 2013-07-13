@@ -2,7 +2,7 @@ import os
 
 # Django settings for oc project.
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = False
 
 # Public: www.cos333-oc.herokuapp.com/
