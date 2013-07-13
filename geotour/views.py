@@ -19,8 +19,10 @@ def home(request):
 		tour = Tour.objects.create(destination=destination) #save needed? TODO(jisha)
 		tour.fromAddress = request.POST['fromAddress']
 		tour.returnAddress = request.POST['returnAddress']
-		fmt = '%m/%d/%Y %H:%M'
-		d = datetime.datetime.strptime('05/05/2013 5:10', fmt)
+		fmt = '%m/%d/%Y %I:%M%p'
+		d = datetime.datetime.strptime(request.POST['date']+" "+request.POST['startTime'], fmt)
+		tour.startTime = d
+		d = datetime.datetime.strptime(request.POST['date']+" "+request.POST['endTime'], fmt)
 		# tour.startTime = request.POST['startTime']
 		# tour.endTime = request.POST['endTime']
 		tour.save()	
