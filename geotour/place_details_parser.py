@@ -187,5 +187,15 @@ def getResultsFromObject(json_object):
 # # JSON = get_json_object_from_url(url)
 # results=  JSON['results']
 
+def getDefault():
+  json_obj= get_json_object_from_url("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.7749295,-122.4194155&radius=50000&sensor=false&key=AIzaSyCwNAMpd9pWTcLKgOrmgnP6jE8y3J1Ac3Q&keyword=pier")
+  print json_obj['status']
+  if json_obj['status']=="OK":
+    results1= json_obj['results']
+    results = getFromRadar(results1[:1])
+  for result in results:
+    print result['name']
+  return results
 
 
+getDefault()

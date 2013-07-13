@@ -54,7 +54,10 @@ def home(request):
         # tourId = 1 #take this out
         return HttpResponseRedirect('/results/'+str(tourId))
     return render(request, 'home.html', {})
-    
+  
+def addDefaults(arg):
+    #defaults = getDefaults() 
+    return arg 
 
 # def results(request, tourId):
 #   tour = Tour.objects.get(id = tourId)
@@ -81,6 +84,7 @@ def results(request, tourId):
     p.delete()
     places = []
     placesresults = getPlaces(lat, lng)
+    placesresults =  addDefaults(placesresults);
     for item in placesresults:
         place = Place.objects.create(tour = tour)
         place.name = item['name']
@@ -105,7 +109,8 @@ def change(request):
 
     searchResults = []
     tourPlaces = []
-
+    searchResults= addDefaults(searchResults);
+    tourPlaces =  addDefaults(tourPlaces);
     tour = Tour.objects.get(id = tourId)
     p = Place.objects.filter(tour = tour)
     p.delete()
