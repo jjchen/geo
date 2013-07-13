@@ -2,10 +2,51 @@ import json
 import urllib2
 from operator import itemgetter
 
+globallat = 37.7749295
+globallng = -122.41941550000001 #San Fran
+
 key= "AIzaSyDcTs6ljMw-1EmOkjwbSbidyyGNXKhkJgc"
 firstU = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
+firstRadarU = "https://maps.googleapis.com/maps/api/place/radarsearch/json?location="
 secondU = "&radius=50000&sensor=false&key="+key
+placequery = "https://maps.googleapis.com/maps/api/place/details/json?sensor=false&key"+key
+
+samplereference = "CoQBcwAAAA6ZWWN-e-ZS-z_UcaM5us57lPRGr1bYmY9OW3b73F5lUaET4Nbs7LBaxz5RP86Ayc4ghOvwCEQUVe18SwTWmv8ssRvS7-DIu3bnRr3_N7Pbf1NJEz2h8CTvLNtXG6N_i1CqxwSG9_vhTVIbp-lErDD0TjRvM9q-M8ugASm-26BhEhBwFWRij0Uf1LgI06u60FhqGhTYfMGXr7oq8nVWZpPB-8OqdOzA7g"
+sampleplace = placequery+"&reference="+samplereference
 url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.7749295,-122.41941550000001&radius=50000&sensor=false&key="+key
+areas = { "point_of_interest": 1,
+"amusement_park": 2,
+"aquarium": 2,
+"art_gallery": 1,
+"zoo": 2,
+"movie_theater": 2.5,
+"museum": 1,
+"bowling_alley": 2,
+
+
+"food": 1,
+"bakery": 0.5,
+"cafe": 0.5,
+"restaurant": 1,
+"bar": 2,
+"night_clubpark": 2,
+
+
+"shopping_mall": 2,
+"book_store": 1,
+"clothing_store": 2,
+"department_store": 2,
+"jewelry_store": 1,
+"spa":1
+}
+
+def getAllAreas():
+  global areas
+  str=""
+  for area in areas:
+    str=str+area+"|"
+  return str[:-1]
+
 
 def getUrl(lat, lng):
   global key
@@ -14,6 +55,27 @@ def getUrl(lat, lng):
   url = firstU+str(lat)+","+str(lng)+secondU
   print url
   return url
+
+def getRadarUrl(lat, lng):
+  global key
+  global firstU
+  global secondU
+  url = firstRadarU+str(lat)+","+str(lng)+secondU
+  print url
+  return url
+
+def getFromRadar(results):
+  global placequery
+  results=[]
+  for result in results: 
+    reference = result['reference']
+    url = placequery+"&reference="+reference
+    json_object = get_json_object_from_url(url)
+    results.append[json_object['result']]
+  return results
+
+
+#https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.7749295,-122.4194155&radius=50000&sensor=false&key=AIzaSyDcTs6ljMw-1EmOkjwbSbidyyGNXKhkJgc
 
 
 def getPlaces(lat,lng):
@@ -25,12 +87,33 @@ def getPlaces(lat,lng):
     print result['name']
   return results
 
+def getMultipleAreas(lat,lng,areas):
+  global globallat
+  global globallng
+  print "inGetPlacesIn Area"
+  url = getRadarUrl(lat,lng)
+  url = url+"&types="+areas
+  json_obj = get_json_object_from_url(url)
+  results1 = json_obj['results']
+  results = getFromRadar(results1)
+
+  for result in results:
+    print result['name']
+  return results
+
 def getPlacesInArea(lat, lng, area):
-  print "inGetPlaces"
-  url = getUrl(lat,lng)
-  url = url+"&types="+area
-  json_object = get_json_object_from_url(url)
-  results = json_obj['results']
+  global areas
+  global globallat
+  global globallng
+  print "inGetPlacesIn Area"
+  url = getRadarUrl(lat,lng)
+  if area in areas.keys():
+    url = url+"&types="+area
+    print "url set"
+  json_obj = get_json_object_from_url(url)
+  results1 = json_obj['results']
+  results = getFromRadar(results1)
+
   #results.sort(key=itemgetter('name'))
   for result in results:
     print result['name']
@@ -86,10 +169,11 @@ def getResultsFromObject(json_object):
     print result['name']
 
 
-
-url = getUrl(37.7749295,-122.41941550000001)
-JSON = get_json_object_from_url(url)
-results=  JSON['results']
+#results = getPlacesInArea(37.7749295,-122.41941550000001, "movie_theatre")
+results = getMultipleAreas(37.7749295,-122.41941550000001, getAllAreas())
+# url = getUrl(37.7749295,-122.41941550000001)
+# # JSON = get_json_object_from_url(url)
+# results=  JSON['results']
 
 
 
