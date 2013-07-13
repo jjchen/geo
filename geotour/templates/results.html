@@ -1,11 +1,14 @@
 <!DOCTYPE html>
+
+{% load staticfiles  %}
+
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="../static_files/style.css">
-        <link rel="stylesheet" type="text/css" href="../static_files/results.css">
+        <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "results.css" %}">
         <title>Plan a Day</title>
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <script src="../static_files/results.js"></script>
+        <script src="{% static "results.js" %}"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script type="text/javascript">
             function filter() {
@@ -23,20 +26,7 @@
         <div id="topBanner">Mini LOGO</div>
         <div id="main">
             {% include 'timeline.html' %}
-        </div>
 
-            <article>
-                <div id="miniNavBar">
-                    <img src="../static_files/images/gmaps.png" alt="Google Maps Icon" id="gMapIcon">
-                </div>
-                <!--
-                    <div id="verticalTimeline">
-                    </div>
-                  -->
-                <div id="tourResult">
-                    {% include 'timeline.html' %}
-                </div>
-                </article>
 
         <script type="text/javascript">
             $('.list-left').sortable({
@@ -45,5 +35,6 @@
 
             $('.list-right').sortable();
         </script>
+        </div>
     </body>
 </html>
