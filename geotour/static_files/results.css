@@ -5,26 +5,31 @@ html {
 
 body {
     margin: 0px;
-    background-color: #f6f6f6;
+    background-color: #f8f8f8;
 }
 
 #topBanner {
-    padding-top: 20px;
-    padding-bottom: 5px;
+    padding-top: 0px;
+    padding-bottom: 55x;
     position: relative;
     margin: 0px;
-    height: 30px;
+    height: 65px;
     width: 100%;
-    background-color: #78D683;
+    background-color: #E8F8FC;
+    border: 5px solid #25DB47;
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 
 #topBanner h1 {
     width: 1000px;
     position: relative; 
     margin: auto;
-    font-family: "Muli", sans-serif;
-    font-size: 35px; 
+    font-family: "Great Vibes", cursive;
+    font-size: 55px;
     text-align: right;
+    z-index: 10000;
 }
 
 #main {
