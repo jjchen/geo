@@ -18,7 +18,6 @@
                 lats.push({{place.address}});
                 lngs.push({{place.details}});
             {% endfor %} 
-            var modeOfTransport = ;
         </script>
         <script src="{% static "results.js" %}"></script>
 	<script src="{% static "jquery.colorbox.js" %}"></script>
@@ -60,7 +59,7 @@
                         var time = $('this').height()/100.0;
                         var hour = Math.floor(time);
                         var minutes = (time * 60) % 60;
-
+                        $(this).text($(this).text() + "</br>" +hour + "h "+minutes+"m");
                          durations.push($('this').height()/100.0);
                     });
                     data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations, 'csrfmiddlewaretoken': '{{ csrf_token }}'}
@@ -81,6 +80,10 @@
                     //    alert($(this).attr('id'));
                     //    alert("width: " + $(this).height())
                     //    alert($(this).height()/100.0)
+                        var time = $('this').height()/100.0;
+                        var hour = Math.floor(time);
+                        var minutes = (time * 60) % 60;
+                        $(this).text($(this).text() + "</br>" +hour + "h "+minutes+"m");
                         durations.push($(this).height()/100.0);
                     });
                     data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations, 'csrfmiddlewaretoken': '{{ csrf_token }}'}
