@@ -13,10 +13,10 @@
 
 <div id="searchResults">
     <div class="list-left ui-sortable">
-		{% for place in places %}
-			<div class="singleSearchResults place">Place 1</div>
-			<div class="singleSearchResults place">Place 2</div>
-			<div class="singleSearchResults place">{{place.name}}</div>
+		{% for place in searchResults %}
+			<div class="singleSearchResults place" id='91'>Place 1</div>
+			<div class="singleSearchResults place" id='90'>Place 2</div>
+			<div class="singleSearchResults place" id='{{place.id}}'>{{place.name}}</div>
 		{% endfor %}
 	</div>
 </div>
@@ -29,9 +29,9 @@
 	  -->
 	<div id="tourResult">
 		<div class="list-right ui-sortable">
-		{% for place in places %}
-			<div class="place">Place 3</div>
-		    <div class="place" id='myplace'>{{place.name}}</div>
+		{% for place in tourPlaces %}
+			<div class="place" id='{{place.id}}'>Place 3</div>
+		    <div class="place" id='{{place.id}}'>{{place.name}}</div>
 		{% endfor %}
 		</div>
 	</div>

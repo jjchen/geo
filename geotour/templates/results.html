@@ -25,7 +25,8 @@
 
     <body>
         <div id="topBanner">Mini LOGO</div>
-
+        <div id="gMapsPanel">HI</div>
+        <div id="gMapsDiv"></div>
         <div id="miniNavBar">
             Test
             <img src="{% static 'images/gmaps.png' %}" id="gMapsIcon">
@@ -42,11 +43,43 @@
 
             $('.list-right').sortable({
                 receive: function(event, ui) {
+                    /* save to database */
+                    /* send tour id, list of places */
+                    places = []
+                    durations = []
+                    $('.list-right .place').each(function(index) {
+                        places.push(this.id);
+                        alert(this.style.width/100.0)
+                        durations.push(this.style.width/100.0);
+                    });
+                    data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations}
+                    // $.post('{% url "geotour:update" %}', data, function(htmlResponse) {
+
+                    // });
                     $('.list-right .place').resizable({ handles: "s" });
                 }
             });
 
-            $('.list-right .place').resizable({ handles: "s" });
+            $('.list-right .place').resizable({ handles: "s", 
+                stop: function(event, ui) {
+                    places = []
+                    durations = []
+                    $('.list-right .place').each(function(index) {
+                        places.push(this.id);
+                        alert(this.id)
+                        alert(this.style.width/100.0)
+                        durations.push(this.style.width/100.0);
+                    });
+                    data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations}
+                    // $.post('{% url "geotour:update" %}', data, function(htmlResponse) {
+                    // });
+                }
+            });
+
+            $('#gMapsIcon').click(function() {
+                $("#gMapsPanel").toggle();
+                $("#gMapsDiv").toggle();
+            })
         </script>
         </div>
     </body>

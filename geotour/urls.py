@@ -7,4 +7,5 @@ urlpatterns = patterns('',
 	url(r'^results/(?P<tourId>\w+)/$', views.results, name='results'),
 	url(r'^test/', views.test, name='test'),
 	url(r'^change/', views.change, name='change'),
+	url(r'^update/', views.update, name='update')
 )
