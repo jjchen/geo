@@ -1,6 +1,7 @@
 var listTypes = ["poiList", "foodList", "shopList"];
 
 var toggleList = function(type) {
+
     $("#"+type).show();
 
     for (var i = 0; i < listTypes.length; i++) {
@@ -20,7 +21,7 @@ var chooseTranspo = function(e) {
 };
 
 var openGoogleMaps = function() {
-    alert("Need to make maps pop up!");
+    alert("Need to make maps pop up!" + tourId);
 };
 
 var resizePage = function() {

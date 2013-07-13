@@ -8,6 +8,11 @@
         <link rel="stylesheet" type="text/css" href="{% static "results.css" %}">
         <title>Plan a Day</title>
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script type="text/javascript"> 
+            var tourId = {{tourId}}; 
+            var searchResults = {{searchResults}};
+            var tourPlaces = {{tourPlaces}};
+        </script>
         <script src="{% static "results.js" %}"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
