@@ -54,11 +54,11 @@
                     $('.list-right .place').each(function(index) {
                         places.push($(this).attr('id'));
                     //    alert($('this').height()/100.0)
-                        var time = $('this').height()/100.0;
+                        var time = $(this).height()/100.0;
                         var hour = Math.floor(time);
                         var minutes = (time * 60) % 60;
-                        $(this).text($(this).text() + "</br>" +hour + "h "+minutes+"m");
-                         durations.push($('this').height()/100.0);
+                        $(this).html($(this).html() + "<br>" +hour + "h "+Math.round(minutes)+"m");
+                         durations.push($(this).height()/100.0);
                     });
                     data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations, 'csrfmiddlewaretoken': '{{ csrf_token }}'}
                     $.post('{% url "geotour:update" %}', data, function(htmlResponse) {
@@ -78,10 +78,10 @@
                     //    alert($(this).attr('id'));
                     //    alert("width: " + $(this).height())
                     //    alert($(this).height()/100.0)
-                        var time = $('this').height()/100.0;
+                        var time = $(this).height()/100.0;
                         var hour = Math.floor(time);
                         var minutes = (time * 60) % 60;
-                        $(this).text($(this).text() + "</br>" +hour + "h "+minutes+"m");
+                        $(this).html($(this).html() + "<br> " +hour + "h "+Math.round(minutes)+"m");
                         durations.push($(this).height()/100.0);
                     });
                     data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations, 'csrfmiddlewaretoken': '{{ csrf_token }}'}

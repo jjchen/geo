@@ -66,6 +66,12 @@
 	  -->
 	<div id="tourResult">
 		<div class="list-right ui-sortable" id="blah">
+		<div>
+            <div class="place" id='{{place.id}}'>{{place.name}} HI</div>
+            <div class="delete">
+                <input type="button" class="brightButton small deleteButton" value="X">
+            </div>
+        </div>
 		{% for place in tourPlaces %}
         <div>
             <div class="place" id='{{place.id}}'>{{place.name}}</div>
