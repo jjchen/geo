@@ -22,46 +22,16 @@
     <body>
         <div id="topBanner">Mini LOGO</div>
         <div id="main">
-            <nav>
-                <!--Search filters go here-->
-                <div id="searchFilters">
-                    <form method="POST">{% csrf_token %}
-                        {% for area in areas %}
-                        {{area}} 
-                        <input type="checkbox" onclick="filter()" name="areas" value="{{area}}" id="areas">
-                        {% endfor %}
-                    </form>
-                </div>
-      
-                <div id="searchResults">
-                    {% for place in places %}
-                    <div class="singleSearchResults">
-                        <p>{{place.name}}</p>
-                        <p>{{place.address}}</p>
-                    </div>
-                    {% endfor %}
-                </div>
-            </nav>
+            {% include 'timeline.html' %}
+        </div>
 
-            <article>
-                <div id="miniNavBar">
-                    map icon go here ^_^
-                </div>
-                <!--
-                    <div id="verticalTimeline">
-                    </div>
-                  -->
-                <div id="tourResult">
-                    {% include 'timeline.html' %}
-                </div>
-                </article>
 
         <script type="text/javascript">
-            $('ul.list-left').sortable({
-                connectWith: 'ul.list-right'
+            $('.list-left').sortable({
+                connectWith: '.list-right'
             });
 
-            $('ul.list-right').sortable();
+            $('.list-right').sortable();
         </script>
     </body>
 </html>
