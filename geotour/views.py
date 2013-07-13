@@ -1,4 +1,3 @@
-
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -11,18 +10,20 @@ import datetime
 
 from place_details_parser import *
 
-def home(request, lat, lng):
+def home(request):
 	if request.method == 'POST':
 		print request.POST['lat']
+		print request.POST['lng']
 		destination = request.POST['destination']
 
 		tour = Tour.objects.create(destination=destination) #save needed? TODO(jisha)
 		tour.save()
 		latlng= LatLngs.objects.create(tour=tour)
+		latlng.save()
 		tour.fromAddress = request.POST['fromAddress']
 		tour.returnAddress = request.POST['returnAddress']
-		latlng.lat = lat
-		latlng.lng = lng
+		latlng.lat = request.POST['lat']
+		latlng.lng = request.POST['lng']
 		fmt = '%m/%d/%Y %I:%M%p'
 		d = datetime.datetime.strptime(request.POST['date']+" "+request.POST['startTime'], fmt)
 		tour.startTime = d
@@ -30,16 +31,16 @@ def home(request, lat, lng):
 		# tour.startTime = request.POST['startTime']
 		# tour.endTime = request.POST['endTime']
 		tour.save()	
+		latlng.save()
 		#get_json_object_from_url(destination)
 		tourId = tour.id
 		# tourId = 1 #take this out
-	return HttpResponseRedirect('/results/'+str(tourId))
+		return HttpResponseRedirect('/results/'+str(tourId))
+	return HttpResponseRedirect('/results/'+str(1))
 	
 
 def results(request, tourId):
 	tour = Tour.objects.get(id = tourId)
-	# lat = tour.lat
-	# lng = tour.lng
 
 	places = Place.objects.filter(tour = tour)
 

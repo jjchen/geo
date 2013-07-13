@@ -10,29 +10,37 @@
             <img src="{% static 'images/bike_icon.png' %}" id="bikeIcon" class="icons">
             <img src="{% static 'images/walk_icon.png' %}" id="walkIcon" class="icons">
         </div>
-        <div id="filterDropDowns">
-            <select id="poi">
-                <option name="amusement_park">Amusement Park</option>
-                <option name="aquarium">Aquarium</option>
-                <option name="art_gallery">Art Gallery</option>
-                <option name="zoo">Zoo</option>
-                <option name="museum">Museum</option>
-                <option name="bowling_alley">Bowling Alley</option>
-            </select>
-            <select id="food">
-                <option value="bakery">Bakery</option>
-                <option value="cafe">Cafe</option>
-                <option value="restaurant">Restaurant</option>
-                <option value="bar">Bar</option>
-                <option value="night_club">Night Club</option>
-            </select>
-            <select id="shop">
-                <option value="shopping_mall">Shopping Mall</option>
-                <option value="book_store">Book Store</option>
-                <option value="department_store">Department Store</option>
-                <option value="jewelry_store">Jewelry Store</option>
-                <option value="spa">Spa</option>
-            </select>
+        <div id="filterOptions">
+            <input type="button" class="brightButton small" value="Points of Interest" id="poiButton" onclick="toggleList('poiList')">
+            <input type="button" class="brightButton small" value="Food" id="foodButton" onclick="toggleList('foodList')">
+            <input type="button" class="brightButton small" value="Shopping" id="shopButton" onclick="toggleList('shopList')">
+        </div>
+        <div id="moreOptions">
+            <div id="poiList">
+                <input type="checkbox" onclick="filter()" name="amusement_park">Amusement Park</input><br>
+                <input type="checkbox" onclick="filter()" name="aquarium">Aquarium</input><br>
+                <input type="checkbox" onclick="filter()" name="art_gallery">Art Gallery</input><br>
+                <input type="checkbox" onclick="filter()" name="bowling_alley">Bowling Alley</input><br>
+                <input type="checkbox" onclick="filter()" name="movie_theater">Movie Theater</input><br>
+                <input type="checkbox" onclick="filter()" name="museum">Museum"</input><br>
+                <input type="checkbox" onclick="filter()" name="zoo">Zoo"</input><br>
+            </div>
+            <div id="foodList">
+                <input type="checkbox" onclick="filter()" name="food">Food</input><br>
+                <input type="checkbox" onclick="filter()" name="restaurant">Restaurant</input><br>
+                <input type="checkbox" onclick="filter()" name="bakery">Bakery</input><br>
+                <input type="checkbox" onclick="filter()" name="cafe">Cafe</input><br>
+                <input type="checkbox" onclick="filter()" name="bar">Bar</input><br>
+                <input type="checkbox" onclick="filter()" name="night_cafe">Night Cafe</input><br>
+            </div>
+            <div id="shopList">
+                <input type="checkbox" onclick="filter()" name="shopping_mall">Shopping Mall</input><br>
+                <input type="checkbox" onclick="filter()" name="book_store">Book Store</input><br>
+                <input type="checkbox" onclick="filter()" name="clothing_store">Clothing Store</input><br>
+                <input type="checkbox" onclick="filter()" name="department_store">Department Store</input><br>
+                <input type="checkbox" onclick="filter()" name="jewelry_store"></input>Jewelry Store<br>
+                <input type="checkbox" onclick="filter()" name="spa">Spa</input><br>
+            </div>
         </div>
         {% for area in areas %}
         {{area}} 
@@ -44,15 +52,15 @@
 <div id="searchResults">
     <div class="list-left ui-sortable">
 		{% for place in places %}
-            <div class="singleSearchResults">
+            <div class="singleSearchResult">
                 <div id="placeTitle">Place 1</div>
                 <div id="description">This is a place for blah</div>
             </div>
-			<div class="singleSearchResults">Place 2</div>
-			<div class="singleSearchResults">{{place.name}}</div>
-			<div class="singleSearchResults place">Place 1</div>
-			<div class="singleSearchResults place">Place 2</div>
-			<div class="singleSearchResults place">{{place.name}}</div>
+			<div class="singleSearchResult">Place 2</div>
+			<div class="singleSearchResult">{{place.name}}</div>
+			<div class="singleSearchResult place">Place 1</div>
+			<div class="singleSearchResult place">Place 2</div>
+			<div class="singleSearchResult place">{{place.name}}</div>
 		{% endfor %}
 	</div>
 </div>
