@@ -13,17 +13,17 @@ from place_details_parser import *
 def home(request):
 	if request.method == 'POST':
 		print request.POST['lat']
-		# destination = request.POST['destination']
+		destination = request.POST['destination']
 
-		# tour = Tour.objects.create(destination=destination) #save needed? TODO(jisha)
-		# tour.fromAddress = request.POST['fromAddress']
-		# tour.returnAddress = request.POST['returnAddress']
-		# tour.startTime = request.POST['startTime']
-		# tour.endTime = request.POST['endTime']
-		# tour.save()	
+		tour = Tour.objects.create(destination=destination) #save needed? TODO(jisha)
+		tour.fromAddress = request.POST['fromAddress']
+		tour.returnAddress = request.POST['returnAddress']
+		tour.startTime = request.POST['startTime']
+		tour.endTime = request.POST['endTime']
+		tour.save()	
 		#get_json_object_from_url(destination)
-		# tourId = tour.id
-		tourId = 1 #take this out
+		tourId = tour.id
+		# tourId = 1 #take this out
 		return HttpResponseRedirect('/results/'+str(tourId))
 	return render(request, 'home.html', {})
 
