@@ -82,7 +82,8 @@ def results(request, tourId):
     for item in placesresults:
         place = Place.objects.create(tour = tour)
         place.name = item['name']
-        place.address = item['geometry']['location']
+        place.address = item['geometry']['location']['lat']
+        place.details = item['geometry']['location']['lng']
         print place.name
         print place.address
     places = Place.objects.filter(tour = tour)
@@ -118,7 +119,8 @@ def change(request):
             for item in search:
                 place = Place.objects.create(tour = tour)
                 place.name = item['name']
-                place.address = item['geometry']['location']
+                place.address = item['geometry']['location']['lat']
+                place.details = item['geometry']['location']['lng']
                 print place.name
                 print place.address
                 if not added:
