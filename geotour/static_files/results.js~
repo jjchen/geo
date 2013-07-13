@@ -20,7 +20,6 @@ var chooseTranspo = function(e) {
 };
 
 var openGoogleMaps = function() {
-    // TODO: get real lat and lng; show directions if possible
     var lat = 30.267153;
     var lng = -97.74306079999997;
     $.colorbox({html:'<img src="http://maps.googleapis.com/maps/api/staticmap?center='

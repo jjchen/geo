@@ -1,0 +1,178 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    margin: 0px;
+    background-color: #f6f6f6;
+}
+
+#topBanner {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    margin: 0px;
+    height: 30px;
+    width: 100%;
+    background-color: #4ED147;
+    font-family: "Great Vibes", cursive;
+    font-size: 20px; 
+    text-align: right;
+}
+
+#main {
+    margin: auto;
+    height: auto;
+    width: 1000px;
+    position: relative;
+}
+
+/* Left side: */
+nav {
+    float: left;
+    position: relative;
+    width: 400px;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+#searchFilters {
+    padding: 5px;
+}
+
+#poiList {
+    display: none;
+}
+
+#foodList {
+    display: none;
+}
+
+#shopList {
+    display: none;
+}
+
+#searchResults {
+    padding: 5px;
+
+}
+
+#gMapsPanel {
+    display:none;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #111;
+    opacity: 0.45;
+    top: 0px;
+    left: 0px;
+}
+
+#gMapsDiv {
+    position:absolute;
+    width:500px;
+    height:500px;
+    border:2px solid #000;
+    z-index: 200;
+    display:none;
+}
+
+.singleSearchResult {
+    position: relative;
+    margin: 5px;
+    background-color: #f81;
+    width: 80%;
+    height: auto;
+}
+
+.singleSearchResult #placeTitle {
+    text-decoration: bold;
+}
+
+.singleSearchResult #description {
+    text-decoration: none;
+}
+
+/* Right side: */
+article {
+    width: 599px;
+    height: 100%;
+    float: right;
+    position: relative;
+    background-color: #ffffff;
+    border-style: solid;
+    border-width: 1px;
+    border-right: none; 
+    border-bottom: none; 
+    border-top: none; 
+}
+
+/* map icon goes here  */
+#miniNavBar {
+    padding: 5px;
+    float: right; 
+    width: auto;
+}
+
+.list-right .place {
+     width: 500px; 
+     height: 100px;
+     background-color: #f81;
+     padding:20px;
+     margin:20px;
+}
+
+.list-right{
+    width: 500px;
+}
+
+.icons {
+    width: 30px;
+    height: 30px;  
+}
+
+#verticalTimeline {
+    /* Look for APIs (difficult) wait to implement */
+}
+
+#tourResult {
+
+}
+
+.tourEntry {
+
+}
+
+a.selected {
+  background-color:#1F75CC;
+  color:white;
+  z-index:100;
+}
+
+.messagepop {
+  background-color:#FFFFFF;
+  border:1px solid #999999;
+  cursor:default;
+  display:none;
+  margin-top: 15px;
+  position:absolute;
+  text-align:left;
+  width:394px;
+  z-index:50;
+  padding: 25px 25px 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 3px;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+
+.messagepop p, .messagepop.div {
+  border-bottom: 1px solid #EFEFEF;
+  margin: 8px 0;
+  padding-bottom: 8px;
+}
