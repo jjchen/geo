@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="../static_files/style.css">
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <title>Plan a Day</title>
     </head>
     <body>
@@ -11,22 +12,33 @@
             </div>
             <form method="POST">
                 <div id="homeMainForm">
+
                     <div id="destDiv">
-                        <input type="text" name="destination" id="destField">
+                        <input type="text" name="destination" id="destField"
+                            placeHolder="Where to explore?">
                     </div>
+
                     <div id="startEnd">
-                        <input type="text" name="from" class="startEndField">
-                        <!--input type="text" name="return" class="startEndField"-->
+                        <input type="text" name="from" id="startField"
+                            placeHolder="Starting from...">
+                        <div id="showEndField"><a href=""></a></div>
+                        <input type="text" name="return" id="endField">
                     </div>
+
                     <div id="timeFrame">
-                        <input type="text" name="date" id="dateInput">
-                        <input type="text" name="startTime" class="timeInput">
-                        <input type="text" name="endTime" class="timeInput">
+                        <input type="text" name="date" id="dateInput"
+                            placeHolder="Date">
+                        <input type="text" name="startTime" class="timeInput"
+                            placeHolder="Start Time">
+                        <input type="text" name="endTime" class="timeInput"
+                            placeHolder="End Time">
                     </div>
                 </div>
+
                 <div id="homeSubmit">
-                    <input type="submit" value="Go!">
+                    <input type="submit" value="Go!" class="brightButton">
                 </div>
+
             </form>
         </div>
     </body>
