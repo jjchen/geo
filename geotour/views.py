@@ -8,11 +8,19 @@ from geotour.models import Place
 from geotour.models import Tour
 from django.template.defaulttags import csrf_token
 
+include place_details_parser.py
+AREAS = [""]
+
 def home(request):
 	if request.method == 'POST':
-		# destination = request.POST['destination']
-		# tour = Tour('name': request.POST['name'])
-		# tour.save()
+		destination = request.POST['destination']
+		tour = Tour('destination': destination) #save needed? TODO(jisha)
+		tour.fromAddress = request.POST['fromAddress']
+		tour.returnAddress = request.POST['returnAddress']
+		tour.startTime = request.POST['startTime']
+		tour.endTime = request.POST['endTime']
+		tour.save()	
+		#get_json_object_from_url(destination)
 		# tourId = tour.id
 		tourId = 1
 		return HttpResponseRedirect('/results/'+str(tourId))
