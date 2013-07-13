@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="/static_files/style.css">
+        <link rel="stylesheet" type="text/css" href="../static_files/style.css">
+        <link rel="stylesheet" type="text/css" href="../static_files/results.css">
         <title>Plan a Day</title>
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script type="text/javascript">
@@ -17,7 +18,8 @@
     </head>
 
     <body>
-
+        <div id="topBanner">Mini LOGO</div>
+        <div id="main">
             <form method="POST">{% csrf_token %}
                 <div id="areasForm">
                     {% for area in areas %}
@@ -32,6 +34,7 @@
                 <p>{{place.address}}</p>
             </div>
             {% endfor %}
-        </div>      
+        </div>
+    </div>      
     </body>
 </html>
