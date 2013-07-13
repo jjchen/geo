@@ -2,6 +2,8 @@
 <!--Search filters go here-->
 <div id="searchFilters">
     <form method="POST">{% csrf_token %}
+        <div id="transpoIcons">
+        </div>
         {% for area in areas %}
         {{area}} 
         <input type="checkbox" onclick="filter()" name="areas" value="{{area}}" id="areas">
@@ -21,9 +23,10 @@
 </nav>
 
 <article>
-	<div id="miniNavBar">
-	    map icon go here ^_^
-	</div>
+<div id="miniNavBar">
+    Test
+        <img src="{% static "images/gmaps.png" %}" id="gMapsIcon">
+    </div>
 	<!--
 	    <div id="verticalTimeline">
 	    </div>
