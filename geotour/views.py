@@ -21,6 +21,7 @@ def home(request):
 def results(request, tourId):
 	tour = Tour.objects.get(id = tourId)
 	places = Place.objects.filter(tour = tour)
+
 	return render(request, 'results.html', {
 		'places': places
 		})
