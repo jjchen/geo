@@ -1,4 +1,3 @@
-
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -34,7 +33,7 @@ def home(request, lat, lng):
 
 def results(request, tourId):
 	tour = Tour.objects.get(id = tourId)
-	places = Place.objects.filter(tour = tour)
+	places = Place.objects.filter(tour = this.tour)
 
 	return render(request, 'results.html', {'tourId': tourId,
 		'places': places
