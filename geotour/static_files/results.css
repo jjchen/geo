@@ -47,8 +47,17 @@ nav {
 .singleSearchResult {
     position: relative;
     background-color: #ffffff;
+    border: 1px solid #000000;
     width: 80%;
     height: auto;
+}
+
+.singleSearchResult #placeTitle {
+    text-decoration: bold;
+}
+
+.singleSearchResult #description {
+    text-decoration: none;
 }
 
 /* Right side: */
@@ -70,15 +79,9 @@ article {
     padding: 5px;
     float: right; 
     width: auto;
-    border-style: solid;
-    border-width: 1px;
-    border-right: none; 
-    border-left: none; 
-    border-top: none; 
 }
 
-#gMapIcon {
-    width: 30px;
+.icons {
     height: 30px;  
 }
 
