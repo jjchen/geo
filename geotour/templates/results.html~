@@ -9,25 +9,14 @@
 	<link rel="stylesheet" type="text/css" href="{% static "colorbox.css" %}">
         <title>Plan a Day</title>
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <script type="text/javascript"> 
-            var tourId = {{tourId}};
-            var lats = [];
-            var lngs = [];
-            {% for place in tourPlaces %}
-                alert({{place.address}});
-                lats.push({{place.address}});
-                lngs.push({{place.details}});
-            {% endfor %} 
-            var modeOfTransport = ;
-        </script>
         <script src="{% static "results.js" %}"></script>
 	<script src="{% static "jquery.colorbox.js" %}"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
         <script type="text/javascript">
             function filter() {
-                var data = {'tourId':'{{tourId}}', 'csrfmiddlewaretoken': '{{ csrf_token }}', 'areas' : $('#areasForm').serialize()};
-                alert(data);
+                var data = {'tourId':'{{tourId}}'};
+                data += $('#areasForm').serialize();
                 $.post('{% url "geotour:change" %}', data, function(htmlResponse) {
                     var element = document.getElementById('fill_in');
                     element.innerHTML = htmlResponse;
@@ -37,7 +26,12 @@
     </head>
 
     <body>
-        <div id="topBanner"><h1>GeoTour</h1></div>
+        <div id="miniNavBar">
+            Test
+            <img src="{% static 'images/gmaps.png' %}" id="gMapsIcon">
+        </div>
+        <div id="topBanner">GeoTour</div>
+
         <div id="main">
 
             {% include 'timeline.html' %}
@@ -57,19 +51,14 @@
                     $('.list-right .place').each(function(index) {
                         places.push($(this).attr('id'));
                     //    alert($('this').height()/100.0)
-                        var time = $('this').height()/100.0;
-                        var hour = Math.floor(time);
-                        var minutes = (time * 60) % 60;
-
-                         durations.push($('this').height()/100.0);
+                        durations.push($('this').height()/100.0);
                     });
-                    data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations, 'csrfmiddlewaretoken': '{{ csrf_token }}'}
+                    data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations}
                     $.post('{% url "geotour:update" %}', data, function(htmlResponse) {
 
                     });
                     $('.list-right .place').resizable({ handles: "s" });
-                       
-                 }
+                }
             });
 
             $('.list-right .place').resizable({ handles: "s", 
@@ -83,9 +72,8 @@
                     //    alert($(this).height()/100.0)
                         durations.push($(this).height()/100.0);
                     });
-                    data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations, 'csrfmiddlewaretoken': '{{ csrf_token }}'}
+                    data = {'tourId' : {{tourId}}, 'places' : places, 'durations' : durations}
                     $.post('{% url "geotour:update" %}', data, function(htmlResponse) {
-                        // location.reload();
                     });
                 }
             });

@@ -9,21 +9,15 @@ body {
 }
 
 #topBanner {
-    padding-top: 20px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     position: relative;
     margin: 0px;
     height: 30px;
     width: 100%;
-    background-color: #78D683;
-}
-
-#topBanner h1 {
-    width: 1000px;
-    position: relative; 
-    margin: auto;
-    font-family: "Muli", sans-serif;
-    font-size: 35px; 
+    background-color: #4ED147;
+    font-family: "Great Vibes", cursive;
+    font-size: 20px; 
     text-align: right;
 }
 
@@ -44,41 +38,24 @@ nav {
 }
 
 #searchFilters {
-    padding: 10px;
-}
-
-#transpoIcons {
-    padding: 10px;
-    margin: auto;
-    text-align: center;
-}
-
-#filterOptions {
-    padding: 10px;
-    margin: auto;
-    text-align: center;
+    padding: 5px;
 }
 
 #poiList {
-    padding: 10px;
     display: none;
 }
 
 #foodList {
-    padding: 10px;
     display: none;
 }
 
 #shopList {
-    padding: 10px;
     display: none;
 }
 
 #searchResults {
-    width: 400px;
-    position: relative;
-    padding: 10px;
-    margin: 20px;
+    padding: 5px;
+
 }
 
 #gMapsPanel {
@@ -105,8 +82,7 @@ nav {
 .singleSearchResult {
     position: relative;
     margin: 5px;
-    background-color: #fff;
-    border: 1px solid #d6d6d6;
+    background-color: #f81;
     width: 80%;
     height: auto;
 }
@@ -121,14 +97,12 @@ nav {
 
 /* Right side: */
 article {
-    padding: 10px;
-    width: 579px;
+    width: 599px;
     height: 100%;
     float: right;
     position: relative;
     background-color: #ffffff;
     border-style: solid;
-    border-color: #d6d6d6;
     border-width: 1px;
     border-right: none; 
     border-bottom: none; 
@@ -140,15 +114,12 @@ article {
     padding: 5px;
     float: right; 
     width: auto;
-    top: 0;
-    right: 0;
 }
 
 .list-right .place {
      width: 500px; 
      height: 100px;
-     background-color: #fff;
-     border: 1px solid #d6d6d6;
+     background-color: #f81;
      padding:20px;
      margin:20px;
 }
@@ -157,19 +128,9 @@ article {
     width: 500px;
 }
 
-.delete {
-    z-index: 1000;
-    position: absolute;
-    margin-top: -50px;
-    left: 85%;
-    height: 25px;
-    width: 15px;
-}
-
 .icons {
     width: 30px;
-    height: 30px;
-    background-size: 50px; 
+    height: 30px;  
 }
 
 #verticalTimeline {
@@ -184,3 +145,34 @@ article {
 
 }
 
+a.selected {
+  background-color:#1F75CC;
+  color:white;
+  z-index:100;
+}
+
+.messagepop {
+  background-color:#FFFFFF;
+  border:1px solid #999999;
+  cursor:default;
+  display:none;
+  margin-top: 15px;
+  position:absolute;
+  text-align:left;
+  width:394px;
+  z-index:50;
+  padding: 25px 25px 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 3px;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+
+.messagepop p, .messagepop.div {
+  border-bottom: 1px solid #EFEFEF;
+  margin: 8px 0;
+  padding-bottom: 8px;
+}
