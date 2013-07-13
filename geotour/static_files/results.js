@@ -9,7 +9,6 @@ var toggleList = function(type) {
     for (var i = 0; i < listTypes.length; i++) {
         if (listTypes[i] != type) {
             $("#"+listTypes[i]).hide();
-            console.log(listTypes[i] + " is hidden!");
         }
     }
 
