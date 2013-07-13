@@ -28,8 +28,9 @@ def home(request):
 		#get_json_object_from_url(destination)
 		tourId = tour.id
 		# tourId = 1 #take this out
-	return HttpResponseRedirect('/results/'+str(tourId))
-	
+		return HttpResponseRedirect('/results/'+str(tourId))
+	return render(request, 'home.html', {})
+
 
 def update(request):
 	return render(request, 'results.html', {})
