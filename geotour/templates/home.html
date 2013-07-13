@@ -10,6 +10,7 @@
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="../static_files/datepicker/js/bootstrap-datepicker.js"></script>
         <script src="../static_files/home.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
         <title>Plan a Day</title>
     </head>
     <body>
@@ -17,7 +18,7 @@
             <div id="bigLogo">
                 Plan a Day
             </div>
-            <form method="POST">{% csrf_token %}
+            <form id="mainForm" method="POST">{% csrf_token %}
                 <div id="homeMainForm">
 
                     <div id="destDiv">
@@ -45,10 +46,48 @@
                 </div>
 
                 <div id="homeSubmit">
-                    <input type="submit" value="Go!" class="brightButton">
+                    <input type="submit" value="Go!" class="brightButton" id="submitButton">
                 </div>
 
             </form>
         </div>
+        <script type="text/javascript">
+    
+            function cityToLatLng(city, callback) {
+                var lat;
+                var lng;
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({
+                    'address': city
+                }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        lat = results[0].geometry.location.lat();
+                        lng = results[0].geometry.location.lng();
+                        callback([lat,lng]);
+                    } else {
+                        alert("Something went wrong: " + status);
+                    }
+                });
+            }
+
+            $("#submitButton").click(function(e) {
+                cityToLatLng($("#destField").val(), function(latLng){
+                    alert("hi");
+                    alert(latLng);
+                    var lat = latLng[0];
+                    var lng = latLng[1];
+                    var input = $("<input>").attr("type", "hidden").attr("name", "lat").val(lat);
+                    $('#mainForm').append($(input));
+                    input = $("<input>").attr("type", "hidden").attr("name", "lng").val(lng);
+                    $('#mainForm').append($(input));
+                    var latLng = [1, 2];
+
+                    data = $('#mainForm').serialize()
+                    alert(data);
+                    $('#mainForm').submit();
+                      });
+                return false;
+            });
+        </script>
     </body>
 </html>

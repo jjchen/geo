@@ -6,6 +6,7 @@
         <title>Plan a Day</title>
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="../static_files/results.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script type="text/javascript">
             function filter() {
                 var data = {'tourId':'{{tourId}}'};
@@ -51,9 +52,16 @@
                     </div>
                   -->
                 <div id="tourResult">
+                    {% include 'timeline.html' %}
                 </div>
                 </article>
 
-        </div>      
+        <script type="text/javascript">
+            $('ul.list-left').sortable({
+                connectWith: 'ul.list-right'
+            });
+
+            $('ul.list-right').sortable();
+        </script>
     </body>
 </html>

@@ -12,7 +12,9 @@ from place_details_parser import *
 
 def home(request):
 	if request.method == 'POST':
+		print request.POST['lat']
 		destination = request.POST['destination']
+
 		tour = Tour.objects.create(destination=destination) #save needed? TODO(jisha)
 		tour.fromAddress = request.POST['fromAddress']
 		tour.returnAddress = request.POST['returnAddress']
@@ -20,8 +22,8 @@ def home(request):
 		tour.endTime = request.POST['endTime']
 		tour.save()	
 		#get_json_object_from_url(destination)
-		# tourId = tour.id
-		tourId = 1 #take this out
+		tourId = tour.id
+		# tourId = 1 #take this out
 		return HttpResponseRedirect('/results/'+str(tourId))
 	return render(request, 'home.html', {})
 
@@ -29,11 +31,11 @@ def results(request, tourId):
 	tour = Tour.objects.get(id = tourId)
 	places = Place.objects.filter(tour = tour)
 
-	return render(request, 'results.html', {
+	return render(request, 'results.html', {'tourId': tourId,
 		'places': places
 		})
 
-def filter(request):
+def change(request):
 	tourId = request.POST['tourId']
 	areas = request.POST.getlist('areas')
 	places = []
@@ -45,7 +47,8 @@ def filter(request):
 				areas_list += [Area.objects.get(name = area)]
 			except:
 				pass
-	return render_to_response('timeline.html', places, context_instance=RequestContext(request))
+	return render_to_response('timeline.html', {'tourId': tourId, 'places': places},
+	 context_instance=RequestContext(request))
 
 def test(request):
 	t = get_template('test.html')
