@@ -3,7 +3,6 @@
 <nav>
 <!--Search filters go here-->
 <div id="searchFilters">
-    <h3>Specify your interests:</h3>
     <form method="POST">{% csrf_token %}
         <div id="transpoIcons">
             <img src="{% static 'images/car_icon.png' %}" id="carIcon" class="icons">
@@ -23,8 +22,8 @@
                 <input type="checkbox" onclick="filter()" name="art_gallery">Art Gallery</input><br>
                 <input type="checkbox" onclick="filter()" name="bowling_alley">Bowling Alley</input><br>
                 <input type="checkbox" onclick="filter()" name="movie_theater">Movie Theater</input><br>
-                <input type="checkbox" onclick="filter()" name="museum">Museum</input><br>
-                <input type="checkbox" onclick="filter()" name="zoo">Zoo</input><br>
+                <input type="checkbox" onclick="filter()" name="museum">Museum"</input><br>
+                <input type="checkbox" onclick="filter()" name="zoo">Zoo"</input><br>
             </div>
             <div id="foodList">
                 <input type="checkbox" onclick="filter()" name="food">Food</input><br>
@@ -43,23 +42,13 @@
                 <input type="checkbox" onclick="filter()" name="spa">Spa</input><br>
             </div>
         </div>
-        {% for area in areas %}
-        {{area}} 
-        <input type="checkbox" onclick="filter()" name="areas" value="{{area}}" id="areas">
-        {% endfor %}
     </form>
 </div>
 
 <div id="searchResults">
     <div class="list-left ui-sortable">
 		{% for place in searchResults %}
-			<div class="singleSearchResults place" id='91'>Place 1</div>
-			<div class="singleSearchResults place" id='90'>Place 2</div>
 			<div class="singleSearchResults place" id='{{place.id}}'>{{place.name}}</div>
-            <div class="singleSearchResults place">
-                <div id="placeTitle">Place 1</div>
-                <div id="description">This is a place for blah</div>
-            </div>
 		{% endfor %}
 	</div>
 </div>
@@ -69,7 +58,6 @@
     <div id="miniNavBar">
         <img src="{% static 'images/gmaps.png' %}" id="gMapIcon" class="icons">
     </div>
-    <h2>Your trip:</h2>
 	<!--
 	    <div id="verticalTimeline">
 	    </div>
@@ -77,8 +65,7 @@
 	<div id="tourResult">
 		<div class="list-right ui-sortable" id="blah">
 		{% for place in tourPlaces %}
-			<div class="place" id='{{place.id}}'>{{place.id}} Place 3</div>
-		    <div class="place" id='{{place.id}}'>{{place.name}} {{place.id}}</div>
+		    <div class="place" id='{{place.id}}'>{{place.name}}</div>
 		{% endfor %}
 		</div>
 	</div>
