@@ -1,6 +1,7 @@
 var listTypes = ["poiList", "foodList", "shopList"];
 
 var toggleList = function(type) {
+
     $("#"+type).show();
 
     for (var i = 0; i < listTypes.length; i++) {
@@ -24,11 +25,6 @@ var openGoogleMaps = function() {
     var lng = -97.74306079999997;
     $.colorbox({html:'<img src="http://maps.googleapis.com/maps/api/staticmap?center='
         +lat+','+lng+'&zoom=8&size=800x400&sensor=false" width="800" height="400">'});
-};
-
-var deleteBox = function(e) {
-    var element = e.srcElement.parentNode.parentNode;
-    element.parentNode.removeChild(element);
 };
 
 var deleteBox = function(e) {
