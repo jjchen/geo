@@ -8,13 +8,18 @@
         <div id="home">
             <form method="POST">
                 <div id="homeMainForm">
-                    <input type="text" name="destination">
-                    <br>
-                    <input type="text" name="from">
-                    <!--input type="text" name="return"-->
-                    <input type="text" name="date">
-                    <input type="text" name="startTime">
-                    <input type="text" name="endTime">
+                    <div id="destDiv">
+                        <input type="text" name="destination" id="destField">
+                    </div>
+                    <div id="startEnd">
+                        <input type="text" name="from" class="startEndField">
+                        <!--input type="text" name="return" class="startEndField"-->
+                    </div>
+                    <div id="timeFrame">
+                        <input type="text" name="date" id="dateInput">
+                        <input type="text" name="startTime" class="timeInput">
+                        <input type="text" name="endTime" class="timeInput">
+                    </div>
                 </div>
                 <div id="homeSubmit">
                     <input type="submit" value="Go!">
