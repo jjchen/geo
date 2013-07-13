@@ -13,7 +13,7 @@ from place_details_parser import *
 def home(request):
 	if request.method == 'POST':
 		destination = request.POST['destination']
-		tour = Tour('destination': destination) #save needed? TODO(jisha)
+		tour = Tour.objects.create(destination=destination) #save needed? TODO(jisha)
 		tour.fromAddress = request.POST['fromAddress']
 		tour.returnAddress = request.POST['returnAddress']
 		tour.startTime = request.POST['startTime']
