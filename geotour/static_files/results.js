@@ -1,5 +1,7 @@
 var listTypes = ["poiList", "foodList", "shopList"];
 
+var modeOfTransport = "car";
+
 var toggleList = function(type) {
 
     $("#"+type).show();
@@ -17,6 +19,7 @@ var chooseTranspo = function(e) {
     var elementId = e.srcElement.id;
     $(".icons").css("border", "none");
     $("#" + elementId).css("border", "1px solid #000000");
+    modeOfTransport = elementId.slice(0, elementId.lastIndexOf("I"));
 };
 
 var openGoogleMaps = function() {
