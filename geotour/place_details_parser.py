@@ -1,5 +1,41 @@
 import json
 import urllib2
+from operator import itemgetter
+
+key= "AIzaSyDcTs6ljMw-1EmOkjwbSbidyyGNXKhkJgc"
+firstU = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
+secondU = "&radius=50000&sensor=false&key="+key
+url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.7749295,-122.41941550000001&radius=50000&sensor=false&key="+key
+
+def getUrl(lat, lng):
+  global key
+  global firstU
+  global secondU
+  url = firstU+str(lat)+","+str(lng)+secondU
+  print url
+  return url
+
+
+def getPlaces(lat,lng):
+  url = getUrl(lat,lng)
+  json_obj = get_json_object_from_url(url)
+  results = json_obj['results']
+  #results.sort(key=itemgetter('name'))
+  for result in results:
+    print result['name']
+  return results
+
+def getPlacesInArea(lat, lng, area):
+  print "inGetPlaces"
+  url = getUrl(lat,lng)
+  url = url+"&types="+area
+  json_object = get_json_object_from_url(url)
+  results = json_obj['results']
+  #results.sort(key=itemgetter('name'))
+  for result in results:
+    print result['name']
+  return results
+
 
 def get_json_object_from_url(url):
   """Given a url of a query, returns an object with the results.
@@ -16,20 +52,44 @@ def get_json_object_from_url(url):
   JSON_object = JSON_decoder.decode(JSON_text)
   return JSON_object
 
-"""
-Example usage:
 
-json_object = get_json_object_from_url('https://something.blah.com/blahblahblah')
-json_object['results'][0]['name']  # gives the name of the first result
-json_object['results'][0]['rating']  # gives the rating of the first result
-"""
+def createPlaceRequest():
+  global key
+  global firstU
+  global secondU
 
-json_obj = get_json_object_from_url('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.7749295,-122.41941550000001&radius=50000&sensor=false&point_of_interest&key=AIzaSyDcTs6ljMw-1EmOkjwbSbidyyGNXKhkJgc')
+def tony():
+  """
+  Example usage:
 
-results = json_obj['results'][:50]
+  json_object = get_json_object_from_url('https://something.blah.com/blahblahblah')
+  json_object['results'][0]['name']  # gives the name of the first result
+  json_object['results'][0]['rating']  # gives the rating of the first result
+  """
 
-from operator import itemgetter
-#results.sort(key=itemgetter('name'))
+  json_obj = get_json_object_from_url('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.7749295,-122.41941550000001&radius=50000&sensor=false&point_of_interest&key=AIzaSyDcTs6ljMw-1EmOkjwbSbidyyGNXKhkJgc')
 
-for result in results:
-	print result['name']
+  results = json_obj['results']
+
+
+
+  from operator import itemgetter
+  #results.sort(key=itemgetter('name'))
+
+  for result in results:
+    print result['name']
+
+def getResultsFromObject(json_object):
+  results = json_obj['results']
+  #results.sort(key=itemgetter('name'))
+  for result in results:
+    print result['name']
+
+
+
+url = getUrl(37.7749295,-122.41941550000001)
+JSON = get_json_object_from_url(url)
+results=  JSON['results']
+
+
+
