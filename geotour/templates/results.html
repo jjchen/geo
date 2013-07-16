@@ -30,6 +30,7 @@
                 $.post('{% url "geotour:change" %}', data, function(htmlResponse) {
                     var element = document.getElementById('fill_in');
                     element.innerHTML = htmlResponse;
+                    setup();
                 });
             }
         </script>
@@ -38,11 +39,16 @@
     <body>
         <div id="topBanner"><h1>GeoTour</h1></div>
         <div id="main">
-
+        <div id="fill_in">
             {% include 'timeline.html' %}
-
+        </div>
 
         <script type="text/javascript">
+        $(document).ready(function($) {
+            setup();
+        });
+
+        function setup() {
             $('.list-left').sortable({
                 connectWith: '.list-right',
             });
@@ -97,6 +103,7 @@
                 $("#gMapsPanel").toggle();
                 $("#gMapsDiv").toggle();
             })
+        }
         </script>
         </div>
     </body>

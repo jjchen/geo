@@ -105,24 +105,23 @@ def change(request):
     global lng
     print "change"
     tourId = request.POST['tourId']
-    areas = request.POST.getlist('areas')
-    print areas
+    wholeList = request.POST.getlist('areas')
+    split = wholeList[0].split('&')
+    areas = []
+    for areaOn in split:
+        area = areaOn.split('=')
+        if area[1] == 'on':
+            areas.append(area[0])
 
     searchResults = []
     tourPlaces = []
-    searchResults= addDefaults(searchResults);
-    tourPlaces =  addDefaults(tourPlaces);
+
     tour = Tour.objects.get(id = tourId)
     p = Place.objects.filter(tour = tour)
     p.delete()
     places = []
-    tour = []
     if areas != None and len(areas) != 0:
         areas_list = []
-        added = False
-        if len(areas) == 0:
-            print "areas was empty"
-            areas.append["museums"]  #DEFAULT
         for area in areas:
             search = getPlacesInArea(lat, lng, area)
             for item in search:
@@ -130,17 +129,13 @@ def change(request):
                 place.name = item['name']
                 place.address = item['geometry']['location']['lat']
                 place.details = item['geometry']['location']['lng']
-                print place.name
-                print place.address
+
                 place.save()
-                if not added:
-                    added = True
-                    searchResults.append(place)
+                searchResults.append(place)
+                tourPlaces.append(place)
     return render(request, 'timeline.html', {'tourId': tourId,
         'searchResults': searchResults, 'tourPlaces': tourPlaces
         })
-    #return render_to_response('timeline.html', {'tourId': tourId, 'searchResults': searchResults, 'tourPlaces': tourPlaces},
-    # context_instance=RequestContext(request))
 
 def test(request):
     t = get_template('test.html')
