@@ -104,6 +104,17 @@
                 $("#gMapsDiv").toggle();
             })
         }
+
+        function reloadPlaces() {
+            $.post('{% url "geotour:reload" %}', data, function(htmlResponse) {
+                    var element = document.getElementById('fill_in');
+                    element.innerHTML = htmlResponse;
+                    setup();                
+            }
+        }
+
+        setInterval( "reloadPlaces()", 60000);
+
         </script>
         </div>
     </body>
