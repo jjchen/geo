@@ -19,6 +19,17 @@
                 lngs.push({{place.details}});
             {% endfor %} 
         </script>
+        <script src="http://js.pusher.com/2.1/pusher.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+          // Enable pusher logging - don't include this in production
+          Pusher.log = function(message) {
+            if (window.console && window.console.log) {
+              window.console.log(message);
+            }
+          };
+
+          var pusher = new Pusher('f716260bfec4431cf252');
+        </script>
         <script src="{% static "results.js" %}"></script>
     <script src="{% static "jquery.colorbox.js" %}"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -33,12 +44,70 @@
                     setup();
                 });
             }
+
+            function update() {
+                var data = {'tourId':'{{tourId}}', 'csrfmiddlewaretoken': '{{ csrf_token }}'};
+                $.post('{% url "geotour:update" %}', data, function(htmlResponse) {
+                    var element = document.getElementById('fill_in');
+                    element.innerHTML = htmlResponse;
+                    setup();
+                });
+            }
+
+            var channel = pusher.subscribe('tour{{tourId}}');
+            channel.bind('change', function() {
+                update();
+            });
         </script>
     </head>
 
     <body>
         <div id="topBanner"><h1>GeoTour</h1></div>
         <div id="main">
+            <!--Search filters go here-->
+            <div id="searchFilters">
+                <h2>Filter by your interests: </h2>
+                <form method="POST">{% csrf_token %}
+                    <div id="transpoIcons">
+                        <img src="{% static 'images/car_icon.png' %}" id="carIcon" class="icons">
+                        <img src="{% static 'images/bus_icon.png' %}" id="busIcon" class="icons">
+                        <img src="{% static 'images/bike_icon.png' %}" id="bikeIcon" class="icons">
+                        <img src="{% static 'images/walk_icon.png' %}" id="walkIcon" class="icons">
+                    </div>
+                    <div id="filterOptions">
+                        <input type="button" class="brightButton small" value="Points of Interest" id="poiButton" onclick="toggleList('poiList')">
+                        <input type="button" class="brightButton small" value="Food" id="foodButton" onclick="toggleList('foodList')">
+                        <input type="button" class="brightButton small" value="Shopping" id="shopButton" onclick="toggleList('shopList')">
+                    </div>
+                    <div id="moreOptions">
+                        <div id="poiList">
+                            <input type="checkbox" onclick="filter()" name="amusement_park">Amusement Park</input><br>
+                            <input type="checkbox" onclick="filter()" name="aquarium">Aquarium</input><br>
+                            <input type="checkbox" onclick="filter()" name="art_gallery">Art Gallery</input><br>
+                            <input type="checkbox" onclick="filter()" name="bowling_alley">Bowling Alley</input><br>
+                            <input type="checkbox" onclick="filter()" name="movie_theater">Movie Theater</input><br>
+                            <input type="checkbox" onclick="filter()" name="museum">Museum</input><br>
+                            <input type="checkbox" onclick="filter()" name="zoo">Zoo</input><br>
+                        </div>
+                        <div id="foodList">
+                            <input type="checkbox" onclick="filter()" name="food">Food</input><br>
+                            <input type="checkbox" onclick="filter()" name="restaurant">Restaurant</input><br>
+                            <input type="checkbox" onclick="filter()" name="bakery">Bakery</input><br>
+                            <input type="checkbox" onclick="filter()" name="cafe">Cafe</input><br>
+                            <input type="checkbox" onclick="filter()" name="bar">Bar</input><br>
+                            <input type="checkbox" onclick="filter()" name="night_cafe">Night Cafe</input><br>
+                        </div>
+                        <div id="shopList">
+                            <input type="checkbox" onclick="filter()" name="shopping_mall">Shopping Mall</input><br>
+                            <input type="checkbox" onclick="filter()" name="book_store">Book Store</input><br>
+                            <input type="checkbox" onclick="filter()" name="clothing_store">Clothing Store</input><br>
+                            <input type="checkbox" onclick="filter()" name="department_store">Department Store</input><br>
+                            <input type="checkbox" onclick="filter()" name="jewelry_store"></input>Jewelry Store<br>
+                            <input type="checkbox" onclick="filter()" name="spa">Spa</input><br>
+                        </div>
+                    </div>
+                </form>
+            </div>
         <div id="fill_in">
             {% include 'timeline.html' %}
         </div>
@@ -104,16 +173,6 @@
                 $("#gMapsDiv").toggle();
             })
         }
-
-        function reloadPlaces() {
-            $.post('{% url "geotour:reload" %}', data, function(htmlResponse) {
-                    var element = document.getElementById('fill_in');
-                    element.innerHTML = htmlResponse;
-                    setup();                
-            }
-        }
-
-        setInterval( "reloadPlaces()", 60000);
 
         </script>
         </div>

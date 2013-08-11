@@ -9,11 +9,17 @@ from geotour.models import Place
 from geotour.models import Tour
 from django.template.defaulttags import csrf_token
 import datetime
-
+import pusher
 from place_details_parser import *
 
 lat = 37.7749295
 lng = -122.41941550000001
+
+p = pusher.Pusher(
+    app_id='51495',
+    key='f716260bfec4431cf252',
+    secret='56b567413491c2c0e8d4'
+)
 
 def home(request):
     global lat
@@ -131,11 +137,24 @@ def change(request):
                 place.details = item['geometry']['location']['lng']
 
                 place.save()
+
                 searchResults.append(place)
                 tourPlaces.append(place)
+    p['tour' + str(tourId)].trigger('change', {})
     return render(request, 'timeline.html', {'tourId': tourId,
         'searchResults': searchResults, 'tourPlaces': tourPlaces
         })
+
+def update(request):
+    tourId = request.POST['tourId']
+    tour = Tour.objects.get(id = tourId)
+    p = Place.objects.filter(tour = tour)
+    for place in p:
+        searchResults.append(place)
+        tourPlaces.append(place)
+    return render(request, 'timeline.html', {'tourId': tourId,
+        'searchResults': searchResults, 'tourPlaces': tourPlaces
+        }) 
 
 def test(request):
     t = get_template('test.html')
